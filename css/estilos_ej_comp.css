@@ -1,0 +1,117 @@
+@import url('https://fonts.googleapis.com/css2?family=Sour+Gummy:ital,wght@0,100..900;1,100..900&display=swap');
+body {
+    background-color: #8eb9e5;
+    font-family: "Sour Gummy";
+    color: #2C3E50;
+    line-height: 1.6;
+}
+
+#titulo-principal {
+    background-color: #e0e8ef;
+    color: rgb(177, 44, 44);
+    text-align: center;
+    font-size: 3em;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+#subtitulo {
+    text-decoration: underline;
+    color: navy;
+    text-align: center;
+    font-size: 1.8em;
+    margin-bottom: 20px;
+}
+
+.contenedor {
+    margin: 0 auto;
+    width: 80%;
+}
+
+.parrafo-intro {
+    font-size: 1.2em;
+    text-align: justify;
+    color: #34495e;
+}
+
+.imagen-anime {
+    width: 80%;
+    max-width: 500px;
+    height: auto;
+    display: block;
+    margin: 0 auto 20px auto;
+}
+
+.titulo-seccion {
+    color: #2c3b82;
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 1.8em;
+    margin-top: 30px;
+    margin-bottom: 10px;
+}
+
+.parrafo-uno {
+    font-size: 18px;
+    text-align: justify;
+    color: navy;
+}
+
+.personaje {
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.foto-personaje {
+    width: 150px;
+    height: 150px;
+    display: block;
+    margin: 0 auto 10px auto;
+}
+
+.nombre-personaje {
+    display: block;
+    text-align: center;
+    font-style: italic;
+    font-weight: bold;
+    color: #8e44ad;
+}
+
+.descripcion-personaje {
+    font-size: 1em;
+    text-align: justify;
+    width: 80%;
+    margin: 0 auto 20px auto;
+}
+
+.tabla-datos {
+    width: 90%;
+    margin: 20px auto;
+    border-collapse: collapse;
+}
+
+.tabla-datos th, .tabla-datos td {
+    padding: 10px;
+    text-align: center;
+}
+
+.tabla-datos th {
+    background-color: #16324f;
+    color: white;
+    font-weight: bold;
+}
+
+.tabla-datos tbody tr:nth-child(odd) td {
+    background-color: #a9cbe8;
+}
+
+.tabla-datos tbody tr:nth-child(even) td {
+    background-color: #d5e6f5;
+}
+
+.parrafo-cierre {
+    font-size: 1.1em;
+    text-align: justify;
+    color: #2c3e50;
+    margin-bottom: 20px;
+}

@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Accesorios Económicos — Propuesta de rediseño v2</title>
+<style>
+  :root{
+    --red:#B42719;
+    --red-dark:#8F1E14;
+    --orange:#F18425;
+    --orange-dark:#D76F14;
+    --amber:#FDAC43;
+    --redorange:#EE4B29;
+    --olive:#4C4926;
+    --olive-2:#7D6E2D;
+    --ink:#231F14;
+    --paper:#FFFFFF;
+    --bg-soft:#FAF8F3;
+    --line:#E3DECF;
+    --radius:3px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size:15.5px;
+    line-height:1.5;
+  }
+  h1,h2,h3{margin:0; font-weight:700; letter-spacing:-0.01em;}
+  a{color:inherit; text-decoration:none;}
+  img{max-width:100%; display:block;}
+  button{font-family:inherit; cursor:pointer;}
+  .wrap{max-width:1200px; margin:0 auto; padding:0 24px;}
+  .badge{
+    display:inline-block; font-size:11.5px; font-weight:700;
+    padding:3px 8px; border-radius:var(--radius); color:#fff;
+    letter-spacing:.02em;
+  }
+  .badge.oferta{background:var(--red);}
+  .badge.nuevo{background:var(--orange);}
+  .badge.reco{background:var(--olive-2);}
+
+  /* ---------- Notas de diseño ---------- */
+  .design-notes{background:#FFFDF8; border-bottom:2px solid var(--olive-2); font-size:13.8px;}
+  .design-notes .wrap{padding:16px 24px;}
+  .design-notes summary{cursor:pointer; font-weight:700;}
+  .design-notes ul{margin:12px 0 0; padding-left:20px;}
+  .design-notes li{margin-bottom:6px;}
+
+  /* ---------- Utility bar ---------- */
+  .utility{background:var(--olive); color:#EFE9D8; font-size:12.5px; font-weight:500;}
+  .utility .wrap{display:flex; gap:24px; padding:6px 24px; overflow-x:auto; white-space:nowrap;}
+  .utility strong{color:var(--amber);}
+
+  /* ---------- Header ---------- */
+  header.site{background:#fff; border-bottom:1px solid var(--line); position:sticky; top:0; z-index:60;}
+  .nav-row{display:flex; align-items:center; gap:22px; padding:14px 0;}
+  .brand{display:flex; align-items:center; gap:10px; flex-shrink:0;}
+  .brand img{width:42px; height:42px; border-radius:50%; object-fit:cover; border:1px solid var(--line);}
+  .brand .word{font-weight:800; font-size:15.5px; line-height:1.15;}
+  .brand .word span{display:block; font-weight:500; font-size:11px; color:var(--olive-2);}
+  .search-box{
+    flex:1; display:flex; align-items:center; gap:8px;
+    border:1.5px solid var(--line); border-radius:var(--radius);
+    padding:0 14px; background:var(--bg-soft); max-width:520px;
+  }
+  .search-box input{
+    border:none; background:transparent; padding:11px 0; width:100%;
+    font-size:14.5px; outline:none; font-family:inherit;
+  }
+  .search-box svg{flex-shrink:0; opacity:.55;}
+  .header-actions{display:flex; align-items:center; gap:10px; flex-shrink:0;}
+  .icon-btn{
+    display:flex; align-items:center; gap:8px;
+    border:1.5px solid var(--line); border-radius:var(--radius);
+    padding:9px 14px; font-size:13.5px; font-weight:700; color:var(--ink);
+    background:#fff; position:relative;
+  }
+  .icon-btn:hover{border-color:var(--orange); color:var(--orange-dark);}
+  .icon-btn.cart{background:var(--red); border-color:var(--red); color:#fff;}
+  .icon-btn.cart:hover{background:var(--red-dark);}
+  .cart-count{
+    position:absolute; top:-8px; right:-8px; background:var(--ink); color:#fff;
+    font-size:11px; font-weight:800; min-width:19px; height:19px; border-radius:50%;
+    display:flex; align-items:center; justify-content:center; padding:0 3px;
+  }
+
+  /* ---------- Category bar ---------- */
+  .cat-bar{background:#fff; border-bottom:2px solid var(--ink);}
+  .cat-bar .wrap{display:flex; gap:4px; overflow-x:auto;}
+  .cat-btn{
+    padding:12px 16px; font-size:14px; font-weight:700; color:var(--ink);
+    border-bottom:3px solid transparent; white-space:nowrap; background:none; border-top:none; border-left:none; border-right:none;
+  }
+  .cat-btn:hover{color:var(--red);}
+  .cat-btn.active{color:var(--red); border-bottom-color:var(--red);}
+
+  /* ---------- Promo banner ---------- */
+  .promo{background:var(--bg-soft); border-bottom:1px solid var(--line);}
+  .promo .wrap{
+    display:grid; grid-template-columns:1.15fr 0.85fr; gap:36px; align-items:center;
+    padding:34px 24px;
+  }
+  .promo .eyebrow{color:var(--red); font-weight:800; font-size:13px; margin-bottom:8px; display:block;}
+  .promo h1{font-size:clamp(26px,3vw,36px); margin-bottom:10px;}
+  .promo p{color:#4b4331; max-width:48ch; margin-bottom:20px; font-size:15px;}
+  .btn{
+    display:inline-flex; align-items:center; gap:8px; font-weight:700; font-size:14.5px;
+    padding:12px 20px; border-radius:var(--radius); border:1.5px solid transparent;
+  }
+  .btn.primary{background:var(--red); color:#fff;}
+  .btn.primary:hover{background:var(--red-dark);}
+  .btn.secondary{background:#fff; color:var(--ink); border-color:var(--ink);}
+  .btn.secondary:hover{border-color:var(--red); color:var(--red);}
+  .promo-cta{display:flex; gap:12px; flex-wrap:wrap;}
+  .promo-media{border:1px solid var(--line); border-radius:6px; overflow:hidden; background:#fff;}
+  .promo-media img{width:100%; height:250px; object-fit:cover;}
+  .trust-row{display:flex; gap:28px; margin-top:24px; flex-wrap:wrap; border-top:1px solid var(--line); padding-top:18px;}
+  .trust-row div b{display:block; font-size:20px; color:var(--red);}
+  .trust-row div span{font-size:12px; color:#665e49;}
+
+  /* ---------- Sections ---------- */
+  .section{padding:48px 0;}
+  .section-head{display:flex; justify-content:space-between; align-items:flex-end; gap:20px; margin-bottom:24px; flex-wrap:wrap;}
+  .section-head h2{font-size:22px;}
+  .section-head p{color:#5a5340; font-size:14px; margin-top:4px;}
+
+  /* ---------- Products ---------- */
+  .product-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:18px;}
+  .product-card{border:1px solid var(--line); border-radius:6px; overflow:hidden; display:flex; flex-direction:column; background:#fff;}
+  .product-media{position:relative; aspect-ratio:1/1; background:var(--bg-soft);}
+  .product-media img{width:100%; height:100%; object-fit:cover;}
+  .product-media .badge{position:absolute; top:8px; left:8px;}
+  .product-body{padding:12px 14px 14px; display:flex; flex-direction:column; gap:6px; flex:1;}
+  .product-cat{font-size:11.5px; font-weight:700; color:var(--olive-2); text-transform:uppercase; letter-spacing:.03em;}
+  .product-title{font-weight:700; font-size:14.5px; line-height:1.3; min-height:38px;}
+  .product-foot{margin-top:auto; display:flex; align-items:center; justify-content:space-between; padding-top:6px;}
+  .price{font-weight:800; font-size:19px; color:var(--red);}
+  .add-btn{
+    width:34px; height:34px; border-radius:50%; border:none;
+    background:var(--orange); color:#fff; font-size:19px; font-weight:800;
+    display:flex; align-items:center; justify-content:center; line-height:1;
+  }
+  .add-btn:hover{background:var(--orange-dark);}
+  .empty-msg{padding:40px 0; text-align:center; color:#87806b; display:none;}
+
+  /* ---------- Benefits ---------- */
+  .benefits{background:var(--bg-soft); border-top:1px solid var(--line); border-bottom:1px solid var(--line);}
+  .benefits .wrap{display:grid; grid-template-columns:repeat(4,1fr); gap:24px; padding:36px 24px;}
+  .benefit{display:flex; gap:12px; align-items:flex-start;}
+  .benefit .ico{
+    width:38px; height:38px; border-radius:50%; background:var(--red); color:#fff;
+    display:flex; align-items:center; justify-content:center; font-weight:800; font-size:15px; flex-shrink:0;
+  }
+  .benefit h3{font-size:14.5px; margin-bottom:4px;}
+  .benefit p{font-size:13px; color:#5a5340; margin:0;}
+
+  /* ---------- Stores ---------- */
+  .stores{display:grid; grid-template-columns:1fr 1fr; gap:40px; align-items:center;}
+  .stores h2{font-size:22px; margin-bottom:12px;}
+  .stores p{color:#5a5340; margin-bottom:16px; max-width:46ch; font-size:14.5px;}
+  .city-chips{display:flex; flex-wrap:wrap; gap:8px; margin-bottom:20px;}
+  .city-chips span{font-size:12.5px; font-weight:700; padding:6px 12px; border:1px solid var(--line); border-radius:20px; background:var(--bg-soft);}
+  .stores .photo{border:1px solid var(--line); border-radius:6px; overflow:hidden;}
+  .stores .photo img{width:100%; height:100%; object-fit:cover;}
+
+  /* ---------- Footer ---------- */
+  footer.site{background:var(--olive); color:#EFE9D8; padding:40px 0 18px;}
+  .foot-grid{display:grid; grid-template-columns:1.4fr 1fr 1fr 1fr; gap:28px; margin-bottom:28px;}
+  .foot-brand{display:flex; gap:10px; align-items:center; margin-bottom:12px;}
+  .foot-brand img{width:36px; height:36px; border-radius:50%;}
+  .foot-brand .word{font-weight:800; color:#fff; font-size:14.5px;}
+  footer h4{color:#fff; font-size:12.5px; text-transform:uppercase; letter-spacing:.05em; margin-bottom:12px;}
+  footer ul{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:8px; font-size:13.8px;}
+  footer ul a:hover{color:var(--amber);}
+  .foot-bottom{border-top:1px solid rgba(255,255,255,0.16); padding-top:16px; font-size:12px; display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px;}
+
+  /* ---------- Cart drawer ---------- */
+  .overlay{
+    position:fixed; inset:0; background:rgba(35,31,20,0.5); z-index:90;
+    opacity:0; pointer-events:none; transition:opacity .2s ease;
+  }
+  .overlay.open{opacity:1; pointer-events:auto;}
+  .drawer{
+    position:fixed; top:0; right:0; height:100%; width:400px; max-width:92vw;
+    background:#fff; z-index:100; transform:translateX(100%);
+    transition:transform .25s ease; display:flex; flex-direction:column;
+    box-shadow:-8px 0 24px rgba(0,0,0,0.15);
+  }
+  .drawer.open{transform:translateX(0);}
+  .drawer-head{display:flex; align-items:center; justify-content:space-between; padding:18px 20px; border-bottom:1px solid var(--line);}
+  .drawer-head h3{font-size:17px;}
+  .drawer-close{border:none; background:none; font-size:22px; line-height:1; color:var(--ink);}
+  .drawer-body{flex:1; overflow-y:auto; padding:16px 20px;}
+  .cart-item{display:flex; gap:12px; padding:12px 0; border-bottom:1px solid var(--line);}
+  .cart-item img{width:56px; height:56px; object-fit:cover; border-radius:4px; border:1px solid var(--line); flex-shrink:0;}
+  .cart-item .info{flex:1; min-width:0;}
+  .cart-item .info .name{font-weight:700; font-size:13.8px; margin-bottom:2px;}
+  .cart-item .info .price{font-size:13.5px;}
+  .cart-item .remove{border:none; background:none; color:#a89f83; font-size:12.5px; text-decoration:underline; padding:0;}
+  .cart-empty{text-align:center; color:#87806b; padding:40px 10px; font-size:14px;}
+  .drawer-foot{border-top:1px solid var(--line); padding:16px 20px 20px; background:var(--bg-soft);}
+  .subtotal-row{display:flex; justify-content:space-between; font-weight:700; font-size:15px; margin-bottom:14px;}
+  .field{margin-bottom:12px;}
+  .field label{display:block; font-size:12.5px; font-weight:700; margin-bottom:5px;}
+  .field input{
+    width:100%; padding:10px 12px; border:1.5px solid var(--line); border-radius:var(--radius);
+    font-size:14px; font-family:inherit; outline:none;
+  }
+  .field input:focus{border-color:var(--orange);}
+  .field input.invalid{border-color:var(--red);}
+  .field .hint{font-size:11.5px; color:#8a836c; margin-top:4px;}
+  .field .hint.error{color:var(--red); font-weight:700;}
+  .send-btn{
+    width:100%; padding:13px; border:none; border-radius:var(--radius); background:#3fae4a;
+    color:#fff; font-weight:800; font-size:15px; display:flex; align-items:center; justify-content:center; gap:8px;
+  }
+  .send-btn:disabled{background:#c9c3b0; cursor:not-allowed;}
+  .send-btn:not(:disabled):hover{background:#379a41;}
+
+  /* ---------- Toast ---------- */
+  .toast{
+    position:fixed; bottom:26px; left:50%; transform:translateX(-50%) translateY(20px);
+    background:var(--ink); color:#fff; padding:13px 20px; border-radius:6px;
+    font-size:14px; font-weight:600; display:flex; align-items:center; gap:10px;
+    box-shadow:0 8px 20px rgba(0,0,0,0.25); z-index:120; opacity:0; pointer-events:none;
+    transition:opacity .2s ease, transform .2s ease;
+  }
+  .toast.show{opacity:1; transform:translateX(-50%) translateY(0);}
+  .toast .check{
+    width:20px; height:20px; border-radius:50%; background:#3fae4a; color:#fff;
+    display:flex; align-items:center; justify-content:center; font-size:12px; flex-shrink:0;
+  }
+
+  @media (max-width:980px){
+    .nav-row{flex-wrap:wrap;}
+    .search-box{order:3; max-width:none; width:100%;}
+    .promo .wrap{grid-template-columns:1fr;}
+    .product-grid{grid-template-columns:repeat(2,1fr);}
+    .benefits .wrap{grid-template-columns:repeat(2,1fr);}
+    .stores{grid-template-columns:1fr;}
+    .foot-grid{grid-template-columns:1fr 1fr;}
+  }
+  @media (max-width:560px){
+    .product-grid{grid-template-columns:1fr 1fr;}
+    .benefits .wrap{grid-template-columns:1fr;}
+    .foot-grid{grid-template-columns:1fr;}
+    .drawer{width:100%; max-width:100vw;}
+  }
+</style>
+</head>
+<body>
+
+<div class="utility">
+  <div class="wrap">
+    <span>📞 <strong>6454-9310</strong></span>
+    <span>🇸🇻 14 tiendas en El Salvador</span>
+    <span>Envío nacional $3.50 por pedido</span>
+    <span>Garantía por desperfectos de fábrica</span>
+  </div>
+</div>
+
+<header class="site">
+  <div class="wrap nav-row">
+    <a class="brand" href="#inicio">
+      <img src="https://www.accesorioseconomicos.com/products/logo.jpg" alt="Logo Accesorios Económicos">
+      <span class="word">ACCESORIOS ECONÓMICOS<span>Tienda en línea · El Salvador</span></span>
+    </a>
+    <div class="search-box">
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2"/><line x1="21" y1="21" x2="16.65" y2="16.65" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      <input type="text" id="searchInput" placeholder="Buscar productos, ej. taladro, silla, cámara...">
+    </div>
+    <div class="header-actions">
+      <a class="icon-btn" href="#tiendas">Tiendas</a>
+      <button class="icon-btn cart" id="cartBtn">🛒 Mi pedido<span class="cart-count" id="cartCount">0</span></button>
+    </div>
+  </div>
+  <nav class="cat-bar">
+    <div class="wrap">
+      <button class="cat-btn active" data-cat="todos">Todos</button>
+      <button class="cat-btn" data-cat="Herramientas">Herramientas</button>
+      <button class="cat-btn" data-cat="Hogar">Hogar</button>
+      <button class="cat-btn" data-cat="Vehículo">Vehículo</button>
+      <button class="cat-btn" data-cat="Tecnología">Tecnología</button>
+      <button class="cat-btn" data-cat="Oficina">Oficina</button>
+      <button class="cat-btn" data-cat="Juguetes">Juguetes</button>
+    </div>
+  </nav>
+</header>
+
+<section class="promo" id="inicio">
+  <div class="wrap">
+    <div class="promo-copy">
+      <span class="eyebrow">Oferta de la semana</span>
+      <h1>Hidrolavadora inalámbrica con 2 baterías — $16.50</h1>
+      <p>Importación directa desde China desde 2010. Precios accesibles, garantía por desperfectos de fábrica y envío a todo El Salvador por $3.50 fijo por pedido.</p>
+      <div class="promo-cta">
+        <a class="btn primary" href="#catalogo">Ver catálogo completo</a>
+        <a class="btn secondary" href="https://wa.me/50364549310?text=%C2%A1Hola!%20Quiero%20hacer%20un%20pedido%20en%20Accesorios%20Econ%C3%B3micos.">Ordenar por WhatsApp</a>
+      </div>
+      <div class="trust-row">
+        <div><b>2010</b><span>en operaciones</span></div>
+        <div><b>500,000+</b><span>clientes atendidos</span></div>
+        <div><b>14</b><span>tiendas en el país</span></div>
+      </div>
+    </div>
+    <div class="promo-media">
+      <img src="https://www.accesorioseconomicos.com/products/hidrolavadora.jpg" alt="Hidrolavadora 2 baterías">
+    </div>
+  </div>
+</section>
+
+<section class="section" id="catalogo">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <h2 id="resultsTitle">Catálogo</h2>
+        <p>Precio de tienda + $3.50 de envío único por pedido, sin importar cuántos productos agregués.</p>
+      </div>
+    </div>
+    <div class="product-grid" id="productGrid"></div>
+    <p class="empty-msg" id="emptyMsg">No encontramos productos con ese criterio. Probá con otra palabra o categoría.</p>
+  </div>
+</section>
+
+<section class="benefits">
+  <div class="wrap">
+    <div class="benefit"><div class="ico">$</div><div><h3>Precios accesibles</h3><p>Ofertas y nuevos ingresos cada semana.</p></div></div>
+    <div class="benefit"><div class="ico">14</div><div><h3>Tiendas físicas</h3><p>Presencia en las principales ciudades del país.</p></div></div>
+    <div class="benefit"><div class="ico">✓</div><div><h3>Garantía</h3><p>Por desperfectos de fábrica, con tu comprobante.</p></div></div>
+    <div class="benefit"><div class="ico">🚚</div><div><h3>Envío $3.50</h3><p>Tarifa fija a todo El Salvador.</p></div></div>
+  </div>
+</section>
+
+<section class="section" id="tiendas">
+  <div class="wrap stores">
+    <div class="copy">
+      <h2>Catorce tiendas en todo el país</h2>
+      <p>Estamos en San Miguel, San Salvador, Santa Tecla, Santa Ana, Usulután, Sonsonate, La Unión, Santa Rosa de Lima y más ciudades.</p>
+      <div class="city-chips">
+        <span>San Salvador</span><span>Santa Tecla</span><span>San Miguel</span>
+        <span>Santa Ana</span><span>Sonsonate</span><span>Usulután</span>
+        <span>La Unión</span><span>Santa Rosa de Lima</span>
+      </div>
+      <a class="btn primary" href="#">Consultar tienda cercana</a>
+    </div>
+    <div class="photo">
+      <img src="https://www.accesorioseconomicos.com/stores/14-tiendas.png" alt="Mapa de las 14 tiendas de Accesorios Económicos">
+    </div>
+  </div>
+</section>
+
+<footer class="site">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="foot-brand">
+          <img src="https://www.accesorioseconomicos.com/products/logo.jpg" alt="Logo">
+          <span class="word">ACCESORIOS ECONÓMICOS</span>
+        </div>
+        <p style="max-width:32ch;font-size:13.5px;">Productos útiles, precios bajos y atención cerca de vos, desde 2010.</p>
+      </div>
+      <div>
+        <h4>Explorar</h4>
+        <ul><li><a href="#catalogo">Catálogo</a></li><li><a href="#tiendas">Tiendas</a></li></ul>
+      </div>
+      <div>
+        <h4>Contacto</h4>
+        <ul>
+          <li><a href="https://wa.me/50364549310">WhatsApp 6454-9310</a></li>
+          <li><a href="https://www.facebook.com/accesorioschinos">Facebook</a></li>
+          <li><a href="https://www.instagram.com/accesorios_economicossv/">Instagram</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Políticas</h4>
+        <ul><li><a href="#">Garantía por desperfectos</a></li><li><a href="#">Envíos nacionales</a></li></ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Accesorios Económicos</span>
+      <span>Precios sujetos a disponibilidad · Envío nacional $3.50 por pedido</span>
+    </div>
+  </div>
+</footer>
+
+<div class="overlay" id="overlay"></div>
+<div class="drawer" id="drawer">
+  <div class="drawer-head">
+    <h3>Mi pedido</h3>
+    <button class="drawer-close" id="drawerClose">×</button>
+  </div>
+  <div class="drawer-body" id="drawerBody">
+    <div class="cart-empty" id="cartEmpty">🛒<br><br>Tu pedido está vacío.<br>Agregá productos del catálogo.</div>
+  </div>
+  <div class="drawer-foot" id="drawerFoot" style="display:none;">
+    <div class="subtotal-row"><span>Subtotal</span><span id="subtotalValue">$0.00</span></div>
+    <div class="field">
+      <label for="custName">Nombre</label>
+      <input type="text" id="custName" placeholder="Tu nombre">
+    </div>
+    <div class="field">
+      <label for="custPhone">Teléfono (WhatsApp)</label>
+      <input type="tel" id="custPhone" inputmode="numeric" maxlength="8" placeholder="7XXXXXXX">
+      <div class="hint" id="phoneHint">8 dígitos, solo números.</div>
+    </div>
+    <button class="send-btn" id="sendBtn" disabled>Enviar pedido por WhatsApp</button>
+  </div>
+</div>
+
+<div class="toast" id="toast"><span class="check">✓</span><span id="toastText">Producto agregado</span></div>
+
+<script>
+const products = [
+  {id:1, name:"Hidrolavadora · 2 baterías", price:16.50, cat:"Herramientas", badge:"Oferta", img:"https://www.accesorioseconomicos.com/products/hidrolavadora.jpg"},
+  {id:2, name:"Silla ergonómica", price:45.00, cat:"Oficina", badge:"Nuevo", img:"https://www.accesorioseconomicos.com/products/catalogo/silla-ergonomica.jpeg"},
+  {id:3, name:"Canopie importado 3 × 3 m", price:55.00, cat:"Hogar", badge:"", img:"https://www.accesorioseconomicos.com/products/catalogo/canopie-3x3.png"},
+  {id:4, name:"Extintor ABC · 10 lb", price:18.00, cat:"Vehículo", badge:"Recomendado", img:"https://www.accesorioseconomicos.com/products/catalogo/extintores-certificados.jpg"},
+  {id:5, name:"Taladro inalámbrico · 2 baterías", price:20.00, cat:"Herramientas", badge:"", img:"https://www.accesorioseconomicos.com/products/catalogo/taladro-2-baterias.png"},
+  {id:6, name:"Compresor de pintura eléctrico", price:22.50, cat:"Herramientas", badge:"Nuevo", img:"https://www.accesorioseconomicos.com/products/catalogo/compresor-pintura-uso.webp"},
+  {id:7, name:"Set de ollas · 13 piezas", price:20.00, cat:"Hogar", badge:"Nuevo", img:"https://www.accesorioseconomicos.com/products/catalogo/set-ollas-13-piezas-20.jpg"},
+  {id:8, name:"Cámara Wi-Fi", price:13.00, cat:"Tecnología", badge:"", img:"https://www.accesorioseconomicos.com/products/catalogo/camara-wifi.jpg"},
+  {id:9, name:"Silla gamer · con apoyapiés", price:75.00, cat:"Oficina", badge:"", img:"https://www.accesorioseconomicos.com/products/catalogo/sillas-gamer.jpg"},
+  {id:10, name:"Podadora inalámbrica", price:25.00, cat:"Herramientas", badge:"Oferta", img:"https://www.accesorioseconomicos.com/products/catalogo/podadora.jpg"},
+  {id:11, name:"Horno 3 en 1", price:30.00, cat:"Hogar", badge:"Nuevo", img:"https://www.accesorioseconomicos.com/products/catalogo/horno-3-en-1.png"},
+  {id:12, name:"Mini set de cubos · 10 piezas", price:5.00, cat:"Herramientas", badge:"", img:"https://www.accesorioseconomicos.com/products/catalogo/mini-set-cubos-10.jpg"},
+];
+
+let currentCat = "todos";
+let currentSearch = "";
+let cart = []; // {id, qty}
+
+const grid = document.getElementById('productGrid');
+const emptyMsg = document.getElementById('emptyMsg');
+const resultsTitle = document.getElementById('resultsTitle');
+
+function renderGrid(){
+  const filtered = products.filter(p=>{
+    const catOk = currentCat === "todos" || p.cat === currentCat;
+    const searchOk = p.name.toLowerCase().includes(currentSearch.toLowerCase());
+    return catOk && searchOk;
+  });
+  grid.innerHTML = "";
+  emptyMsg.style.display = filtered.length ? "none" : "block";
+  resultsTitle.textContent = currentCat === "todos" ? "Catálogo" : currentCat;
+  filtered.forEach(p=>{
+    const card = document.createElement('div');
+    card.className = "product-card";
+    card.innerHTML = `
+      <div class="product-media">
+        ${p.badge ? `<span class="badge ${p.badge === 'Oferta' ? 'oferta' : p.badge === 'Nuevo' ? 'nuevo' : 'reco'}">${p.badge}</span>` : ""}
+        <img src="${p.img}" alt="${p.name}">
+      </div>
+      <div class="product-body">
+        <span class="product-cat">${p.cat}</span>
+        <div class="product-title">${p.name}</div>
+        <div class="product-foot">
+          <span class="price">$${p.price.toFixed(2)}</span>
+          <button class="add-btn" data-id="${p.id}">+</button>
+        </div>
+      </div>`;
+    grid.appendChild(card);
+  });
+}
+renderGrid();
+
+document.getElementById('searchInput').addEventListener('input', e=>{
+  currentSearch = e.target.value;
+  renderGrid();
+});
+
+document.querySelectorAll('.cat-btn').forEach(btn=>{
+  btn.addEventListener('click', ()=>{
+    document.querySelectorAll('.cat-btn').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    currentCat = btn.dataset.cat;
+    renderGrid();
+  });
+});
+
+grid.addEventListener('click', e=>{
+  if(!e.target.classList.contains('add-btn')) return;
+  const id = parseInt(e.target.dataset.id);
+  const product = products.find(p=>p.id === id);
+  const existing = cart.find(c=>c.id === id);
+  if(existing){ existing.qty += 1; } else { cart.push({id, qty:1}); }
+  updateCartUI();
+  showToast(`"${product.name}" agregado a tu pedido`);
+});
+
+function totalItems(){ return cart.reduce((s,c)=>s+c.qty,0); }
+
+function updateCartUI(){
+  document.getElementById('cartCount').textContent = totalItems();
+  const body = document.getElementById('drawerBody');
+  const empty = document.getElementById('cartEmpty');
+  const foot = document.getElementById('drawerFoot');
+  if(cart.length === 0){
+    body.innerHTML = "";
+    body.appendChild(empty);
+    foot.style.display = "none";
+    return;
+  }
+  body.innerHTML = "";
+  let subtotal = 0;
+  cart.forEach(c=>{
+    const p = products.find(pp=>pp.id===c.id);
+    subtotal += p.price * c.qty;
+    const row = document.createElement('div');
+    row.className = "cart-item";
+    row.innerHTML = `
+      <img src="${p.img}" alt="${p.name}">
+      <div class="info">
+        <div class="name">${p.name}</div>
+        <div class="price">$${p.price.toFixed(2)} × ${c.qty}</div>
+        <button class="remove" data-id="${p.id}">Quitar</button>
+      </div>`;
+    body.appendChild(row);
+  });
+  foot.style.display = "block";
+  document.getElementById('subtotalValue').textContent = `$${subtotal.toFixed(2)}`;
+  validateForm();
+}
+
+document.getElementById('drawerBody').addEventListener('click', e=>{
+  if(!e.target.classList.contains('remove')) return;
+  const id = parseInt(e.target.dataset.id);
+  cart = cart.filter(c=>c.id !== id);
+  updateCartUI();
+});
+
+const overlay = document.getElementById('overlay');
+const drawer = document.getElementById('drawer');
+document.getElementById('cartBtn').addEventListener('click', ()=>{
+  overlay.classList.add('open'); drawer.classList.add('open');
+});
+document.getElementById('drawerClose').addEventListener('click', closeDrawer);
+overlay.addEventListener('click', closeDrawer);
+function closeDrawer(){ overlay.classList.remove('open'); drawer.classList.remove('open'); }
+
+// --- Toast ---
+let toastTimer;
+function showToast(text){
+  const toast = document.getElementById('toast');
+  document.getElementById('toastText').textContent = text;
+  toast.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(()=> toast.classList.remove('show'), 2600);
+}
+
+// --- Teléfono: solo dígitos, máximo 8 ---
+const phoneInput = document.getElementById('custPhone');
+const phoneHint = document.getElementById('phoneHint');
+const nameInput = document.getElementById('custName');
+const sendBtn = document.getElementById('sendBtn');
+
+phoneInput.addEventListener('input', ()=>{
+  const digitsOnly = phoneInput.value.replace(/\D/g,'').slice(0,8);
+  phoneInput.value = digitsOnly;
+  validateForm();
+});
+nameInput.addEventListener('input', validateForm);
+
+function validateForm(){
+  const phoneOk = /^[0-9]{8}$/.test(phoneInput.value);
+  const nameOk = nameInput.value.trim().length > 0;
+  if(phoneInput.value.length > 0 && !phoneOk){
+    phoneInput.classList.add('invalid');
+    phoneHint.textContent = "Ingresá un número válido de 8 dígitos (sin guiones ni espacios).";
+    phoneHint.classList.add('error');
+  } else {
+    phoneInput.classList.remove('invalid');
+    phoneHint.textContent = "8 dígitos, solo números.";
+    phoneHint.classList.remove('error');
+  }
+  sendBtn.disabled = !(phoneOk && nameOk && cart.length > 0);
+}
+
+sendBtn.addEventListener('click', ()=>{
+  if(sendBtn.disabled) return;
+  let msg = `¡Hola! Soy ${nameInput.value.trim()} (tel. ${phoneInput.value}). Quiero hacer este pedido:%0A`;
+  let subtotal = 0;
+  cart.forEach(c=>{
+    const p = products.find(pp=>pp.id===c.id);
+    subtotal += p.price * c.qty;
+    msg += `- ${p.name} x${c.qty} ($${(p.price*c.qty).toFixed(2)})%0A`;
+  });
+  msg += `Subtotal: $${subtotal.toFixed(2)} + envío $3.50`;
+  window.open(`https://wa.me/50364549310?text=${msg}`, '_blank');
+});
+</script>
+
+</body>
+</html>

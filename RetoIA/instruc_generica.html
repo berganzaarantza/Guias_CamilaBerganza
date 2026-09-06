@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Accesorios Económicos — Propuesta de rediseño</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Barlow:ital,wght@0,400;0,500;0,600;0,700;0,800;1,600&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --ink:#132540;
+    --ink-deep:#0B1830;
+    --paper:#F3EEE0;
+    --paper-2:#EAE2CC;
+    --yellow:#F5B22C;
+    --yellow-deep:#D99418;
+    --red:#C8402B;
+    --green:#3C7A5B;
+    --line: rgba(19,37,64,0.16);
+    --radius: 2px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Barlow', sans-serif;
+    font-size:16px;
+    line-height:1.5;
+  }
+  h1,h2,h3, .display{
+    font-family:'Archivo Black', sans-serif;
+    line-height:1.02;
+    letter-spacing:-0.01em;
+    margin:0;
+  }
+  a{color:inherit;text-decoration:none;}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 24px;}
+  .tag{
+    display:inline-block;
+    font-family:'Barlow',sans-serif;
+    font-weight:800;
+    font-size:12.5px;
+    padding:5px 10px;
+    border:2px solid var(--ink);
+    border-radius:var(--radius);
+    background:var(--yellow);
+    color:var(--ink);
+    transform:rotate(-2deg);
+  }
+  .tag.red{background:var(--red);color:#fff;border-color:var(--red);}
+  .tag.outline{background:transparent;border-color:var(--ink);}
+
+  /* ---------- Utility bar ---------- */
+  .utility{
+    background:var(--ink-deep);
+    color:var(--paper);
+    font-size:13.5px;
+    font-weight:600;
+  }
+  .utility .wrap{
+    display:flex; gap:28px; align-items:center;
+    padding-top:8px; padding-bottom:8px;
+    overflow-x:auto; white-space:nowrap;
+  }
+  .utility span{opacity:.92}
+  .utility strong{color:var(--yellow);}
+
+  /* ---------- Header ---------- */
+  header.site{
+    background:var(--paper);
+    border-bottom:3px solid var(--ink);
+    position:sticky; top:0; z-index:50;
+  }
+  .nav-row{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:14px 0;
+    gap:20px;
+  }
+  .brand{display:flex; align-items:center; gap:12px;}
+  .brand img{width:46px; height:46px; border-radius:50%; border:2px solid var(--ink); object-fit:cover;}
+  .brand .word{font-family:'Archivo Black'; font-size:17px; line-height:1.05;}
+  .brand .word span{display:block; font-size:11.5px; font-family:'Barlow'; font-weight:700; letter-spacing:0.06em; color:var(--red);}
+  nav.main{display:flex; gap:26px; font-weight:700; font-size:15px;}
+  nav.main a{padding:6px 2px; border-bottom:3px solid transparent;}
+  nav.main a:hover{border-color:var(--yellow);}
+  .header-actions{display:flex; align-items:center; gap:12px;}
+  .btn{
+    display:inline-flex; align-items:center; gap:8px;
+    font-weight:800; font-size:14.5px;
+    padding:11px 18px;
+    border-radius:var(--radius);
+    border:2px solid var(--ink);
+    cursor:pointer;
+  }
+  .btn.primary{background:var(--ink); color:var(--paper);}
+  .btn.primary:hover{background:var(--ink-deep);}
+  .btn.yellow{background:var(--yellow); color:var(--ink);}
+  .btn.yellow:hover{background:var(--yellow-deep);}
+  .btn.ghost{background:transparent;}
+  .cart-btn{
+    display:flex;align-items:center;justify-content:center;
+    width:44px;height:44px;border:2px solid var(--ink); border-radius:50%;
+    font-size:18px; background:#fff;
+  }
+  .menu-toggle{display:none;}
+
+  /* ---------- Hero ---------- */
+  .hero{
+    background:var(--ink);
+    color:var(--paper);
+    position:relative;
+    overflow:hidden;
+    border-bottom:6px solid var(--yellow);
+  }
+  .hero .wrap{
+    display:grid;
+    grid-template-columns: 1.05fr 0.95fr;
+    align-items:center;
+    gap:40px;
+    padding-top:56px;padding-bottom:56px;
+  }
+  .hero h1{
+    color:#fff;
+    font-size:clamp(38px, 5vw, 60px);
+    margin:16px 0 20px;
+  }
+  .hero h1 em{font-style:normal; color:var(--yellow);}
+  .hero p.lede{
+    font-size:18px; max-width:46ch; color:#D9DEE8; margin-bottom:28px;
+  }
+  .hero-badges{display:flex; gap:10px; flex-wrap:wrap; margin-bottom:6px;}
+  .hero-cta{display:flex; gap:14px; flex-wrap:wrap; margin-bottom:36px;}
+  .stat-row{
+    display:grid; grid-template-columns:repeat(4,1fr);
+    border-top:1px solid rgba(255,255,255,0.18);
+    padding-top:22px;
+    gap:10px;
+  }
+  .stat-row .stat b{
+    display:block; font-family:'Archivo Black'; font-size:26px; color:var(--yellow);
+  }
+  .stat-row .stat span{font-size:12.5px; color:#B9C0CE;}
+  .hero-media{
+    position:relative;
+  }
+  .hero-media .frame{
+    border:4px solid var(--yellow);
+    border-radius:6px;
+    overflow:hidden;
+    transform:rotate(1.4deg);
+    box-shadow: 14px 14px 0 rgba(0,0,0,0.28);
+  }
+  .hero-media img{width:100%; height:340px; object-fit:cover;}
+  .hero-media .pin{
+    position:absolute; bottom:-18px; left:-18px;
+    background:var(--red); color:#fff; border:3px solid var(--ink);
+    border-radius:50%; width:112px; height:112px;
+    display:flex; align-items:center; justify-content:center; text-align:center;
+    font-family:'Archivo Black'; font-size:13px; line-height:1.15;
+    transform:rotate(-8deg);
+  }
+
+  /* ---------- Section headings ---------- */
+  .section{padding:64px 0;}
+  .section.tight{padding:44px 0;}
+  .section-head{
+    display:flex; justify-content:space-between; align-items:flex-end;
+    gap:24px; margin-bottom:30px; flex-wrap:wrap;
+    border-bottom:3px solid var(--ink);
+    padding-bottom:16px;
+  }
+  .section-head h2{font-size:clamp(26px,3.4vw,36px);}
+  .section-head p{max-width:46ch; color:#4b4331; font-size:15px; margin-top:8px;}
+  .section-head .see-all{font-weight:800; font-size:14.5px; border-bottom:2px solid var(--ink); padding-bottom:2px;}
+
+  /* ---------- Categories ---------- */
+  .cat-strip{
+    display:grid; grid-template-columns:repeat(6,1fr); gap:14px;
+  }
+  .cat-card{
+    position:relative; border-radius:6px; overflow:hidden;
+    border:2px solid var(--ink);
+    aspect-ratio: 3/4;
+  }
+  .cat-card img{width:100%; height:100%; object-fit:cover; filter:saturate(1.05);}
+  .cat-card::after{
+    content:''; position:absolute; inset:0;
+    background:linear-gradient(180deg, rgba(19,37,64,0) 40%, rgba(11,24,48,0.92) 100%);
+  }
+  .cat-card .label{
+    position:absolute; left:10px; right:10px; bottom:10px; z-index:2;
+    color:#fff; font-family:'Archivo Black'; font-size:14.5px;
+  }
+
+  /* ---------- Products ---------- */
+  .product-grid{
+    display:grid; grid-template-columns:repeat(4,1fr); gap:20px;
+  }
+  .product-card{
+    background:#fff;
+    border:2px solid var(--ink);
+    border-radius:6px;
+    overflow:hidden;
+    display:flex; flex-direction:column;
+    transition:transform .15s ease;
+  }
+  .product-card:hover{transform:translateY(-4px);}
+  .product-media{position:relative; aspect-ratio:1/1; background:#EFE9D8; border-bottom:2px solid var(--ink);}
+  .product-media img{width:100%; height:100%; object-fit:cover;}
+  .product-media .tag{position:absolute; top:10px; left:10px;}
+  .product-body{padding:14px 16px 16px; display:flex; flex-direction:column; gap:8px; flex:1;}
+  .product-cat{font-size:12px; font-weight:700; color:var(--green); text-transform:uppercase; letter-spacing:.03em;}
+  .product-title{font-family:'Barlow'; font-weight:700; font-size:16px; line-height:1.25;}
+  .product-foot{margin-top:auto; display:flex; align-items:center; justify-content:space-between; padding-top:6px;}
+  .price{font-family:'Archivo Black'; font-size:20px;}
+  .add-btn{
+    width:36px; height:36px; border-radius:50%; border:2px solid var(--ink);
+    background:var(--ink); color:#fff; font-size:19px; font-weight:800;
+    display:flex; align-items:center; justify-content:center; cursor:pointer;
+  }
+  .add-btn:hover{background:var(--red); border-color:var(--red);}
+
+  /* ---------- Benefits ---------- */
+  .benefits{
+    background:var(--ink); color:var(--paper);
+    border-top:3px solid var(--ink); border-bottom:3px solid var(--ink);
+  }
+  .benefits .wrap{
+    display:grid; grid-template-columns:repeat(4,1fr); gap:0;
+  }
+  .benefit{
+    padding:34px 24px; border-left:1px solid rgba(255,255,255,0.16);
+  }
+  .benefit:first-child{border-left:none;}
+  .benefit .num{font-family:'Archivo Black'; color:var(--yellow); font-size:14px; margin-bottom:10px; display:block;}
+  .benefit h3{font-size:18px; color:#fff; margin-bottom:8px;}
+  .benefit p{font-size:14px; color:#B9C0CE; margin:0;}
+
+  /* ---------- Stores ---------- */
+  .stores{
+    display:grid; grid-template-columns:1fr 1fr; gap:44px; align-items:center;
+  }
+  .stores .copy .tag{margin-bottom:16px;}
+  .stores h2{font-size:clamp(26px,3.2vw,34px); margin-bottom:16px;}
+  .stores p{color:#4b4331; margin-bottom:20px; max-width:46ch;}
+  .city-chips{display:flex; flex-wrap:wrap; gap:8px; margin-bottom:26px;}
+  .city-chips span{
+    font-size:13px; font-weight:700; padding:6px 12px; border:2px solid var(--ink); border-radius:20px;
+  }
+  .stores .photo{border:3px solid var(--ink); border-radius:6px; overflow:hidden; box-shadow:10px 10px 0 var(--yellow);}
+  .stores .photo img{width:100%; height:100%; object-fit:cover;}
+
+  /* ---------- CTA band ---------- */
+  .cta-band{
+    background:var(--yellow);
+    border-top:3px solid var(--ink); border-bottom:3px solid var(--ink);
+  }
+  .cta-band .wrap{
+    display:flex; align-items:center; justify-content:space-between; gap:24px; flex-wrap:wrap;
+    padding:40px 24px;
+  }
+  .cta-band h2{font-size:clamp(24px,3vw,32px); max-width:22ch;}
+  .cta-band .btn.primary{background:var(--ink);}
+
+  /* ---------- Footer ---------- */
+  footer.site{background:var(--ink-deep); color:#B9C0CE; padding:48px 0 20px;}
+  .foot-grid{display:grid; grid-template-columns:1.4fr 1fr 1fr 1fr; gap:32px; margin-bottom:36px;}
+  .foot-brand{display:flex; gap:12px; align-items:center; margin-bottom:14px;}
+  .foot-brand img{width:40px; height:40px; border-radius:50%; border:2px solid var(--yellow);}
+  .foot-brand .word{font-family:'Archivo Black'; color:#fff; font-size:15px;}
+  footer h4{color:#fff; font-size:13.5px; text-transform:uppercase; letter-spacing:.05em; margin-bottom:14px;}
+  footer ul{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:9px; font-size:14.5px;}
+  footer ul a:hover{color:var(--yellow);}
+  .foot-bottom{border-top:1px solid rgba(255,255,255,0.14); padding-top:18px; font-size:12.5px; display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px;}
+
+  /* ---------- Notes panel (design commentary, remove in production) ---------- */
+  .design-notes{
+    background:#fff; border-bottom:3px solid var(--ink); font-size:14px;
+  }
+  .design-notes .wrap{padding:18px 24px;}
+  .design-notes summary{cursor:pointer; font-weight:800; font-family:'Barlow';}
+  .design-notes ul{margin:14px 0 0; padding-left:20px;}
+  .design-notes li{margin-bottom:6px;}
+
+  @media (max-width: 980px){
+    .hero .wrap{grid-template-columns:1fr;}
+    .stat-row{grid-template-columns:repeat(2,1fr); row-gap:18px;}
+    .cat-strip{grid-template-columns:repeat(3,1fr);}
+    .product-grid{grid-template-columns:repeat(2,1fr);}
+    .benefits .wrap{grid-template-columns:repeat(2,1fr);}
+    .benefit:nth-child(3){border-left:none;}
+    .stores{grid-template-columns:1fr;}
+    .foot-grid{grid-template-columns:1fr 1fr;}
+    nav.main{display:none;}
+    .menu-toggle{display:flex; width:44px;height:44px; border:2px solid var(--ink); border-radius:6px; align-items:center; justify-content:center; font-size:20px; background:#fff;}
+  }
+  @media (max-width:560px){
+    .cat-strip{grid-template-columns:repeat(2,1fr);}
+    .product-grid{grid-template-columns:1fr 1fr;}
+    .benefits .wrap{grid-template-columns:1fr;}
+    .benefit{border-left:none; border-top:1px solid rgba(255,255,255,0.16);}
+    .benefit:first-child{border-top:none;}
+    .foot-grid{grid-template-columns:1fr;}
+    .utility .wrap{gap:16px;}
+  }
+</style>
+</head>
+<body>
+
+<div class="utility">
+  <div class="wrap">
+    <span>🇸🇻 <strong>14 tiendas</strong> en El Salvador</span>
+    <span>Envío nacional <strong>$3.50</strong> por pedido</span>
+    <span>Garantía por desperfectos de fábrica</span>
+  </div>
+</div>
+
+<header class="site">
+  <div class="wrap nav-row">
+    <a class="brand" href="#inicio">
+      <img src="https://www.accesorioseconomicos.com/products/logo.jpg" alt="Logo Accesorios Económicos">
+      <span class="word">ACCESORIOS<span>ECONÓMICOS · desde 2010</span></span>
+    </a>
+    <nav class="main">
+      <a href="#catalogo">Catálogo</a>
+      <a href="#beneficios">Por qué elegirnos</a>
+      <a href="#tiendas">Tiendas</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+    <div class="header-actions">
+      <a class="btn yellow" href="#" onclick="return false;">🛒 Mi pedido</a>
+      <div class="menu-toggle">☰</div>
+    </div>
+  </div>
+</header>
+
+<section class="hero" id="inicio">
+  <div class="wrap">
+    <div class="hero-copy">
+      <span class="tag">Importación directa desde China · desde 2010</span>
+      <h1>Precios bajos.<br>Catorce tiendas.<br><em>Cero rodeos.</em></h1>
+      <p class="lede">Herramientas, artículos para el hogar, tecnología, oficina y más — con el respaldo de una empresa salvadoreña con 14 sucursales y garantía por desperfectos de fábrica.</p>
+      <div class="hero-cta">
+        <a class="btn primary" href="#catalogo">Ver catálogo</a>
+        <a class="btn ghost" style="border-color:#fff;color:#fff" href="https://wa.me/50364549310?text=%C2%A1Hola!%20Quiero%20hacer%20un%20pedido%20en%20Accesorios%20Econ%C3%B3micos.">Ordenar por WhatsApp</a>
+      </div>
+      <div class="stat-row">
+        <div class="stat"><b>2010</b><span>en operaciones</span></div>
+        <div class="stat"><b>500,000+</b><span>clientes atendidos</span></div>
+        <div class="stat"><b>14</b><span>tiendas en el país</span></div>
+        <div class="stat"><b>670,000+</b><span>seguidores en redes</span></div>
+      </div>
+    </div>
+    <div class="hero-media">
+      <div class="frame">
+        <img src="https://www.accesorioseconomicos.com/hero/entregas-el-salvador-china-round-door-v4.png" alt="Entregas de Accesorios Económicos en El Salvador">
+      </div>
+      <div class="pin">Envío<br>$3.50<br>a todo el país</div>
+    </div>
+  </div>
+</section>
+
+<section class="section tight">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <h2>Compra por pasillo</h2>
+        <p>Las mismas seis categorías que encontrás en nuestras tiendas físicas.</p>
+      </div>
+    </div>
+    <div class="cat-strip">
+      <a class="cat-card" href="#catalogo"><img src="https://www.accesorioseconomicos.com/categories/herramientas-real.jpg" alt="Herramientas"><span class="label">Herramientas</span></a>
+      <a class="cat-card" href="#catalogo"><img src="https://www.accesorioseconomicos.com/categories/hogar-real.jpg" alt="Hogar"><span class="label">Hogar</span></a>
+      <a class="cat-card" href="#catalogo"><img src="https://www.accesorioseconomicos.com/categories/vehiculo-real.jpg" alt="Vehículo"><span class="label">Vehículo</span></a>
+      <a class="cat-card" href="#catalogo"><img src="https://www.accesorioseconomicos.com/categories/tecnologia-real.jpg" alt="Tecnología"><span class="label">Tecnología</span></a>
+      <a class="cat-card" href="#catalogo"><img src="https://www.accesorioseconomicos.com/categories/oficina-real.jpg" alt="Oficina"><span class="label">Oficina</span></a>
+      <a class="cat-card" href="#catalogo"><img src="https://www.accesorioseconomicos.com/categories/juguetes-real.jpg" alt="Juguetes"><span class="label">Juguetes</span></a>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="catalogo">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <h2>Destacados de la semana</h2>
+        <p>Fotografías reales de producto. Precio de la tienda + $3.50 de envío único por pedido.</p>
+      </div>
+      <a class="see-all" href="#">Ver los 80+ productos</a>
+    </div>
+    <div class="product-grid">
+      <div class="product-card">
+        <div class="product-media"><span class="tag">Mejor oferta</span><img src="https://www.accesorioseconomicos.com/products/hidrolavadora.jpg" alt="Hidrolavadora 2 baterías"></div>
+        <div class="product-body">
+          <span class="product-cat">Herramientas</span>
+          <div class="product-title">Hidrolavadora · 2 baterías</div>
+          <div class="product-foot"><span class="price">$16.50</span><button class="add-btn">+</button></div>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-media"><span class="tag red">Nuevo ingreso</span><img src="https://www.accesorioseconomicos.com/products/catalogo/silla-ergonomica.jpeg" alt="Silla ergonómica"></div>
+        <div class="product-body">
+          <span class="product-cat">Oficina</span>
+          <div class="product-title">Silla ergonómica</div>
+          <div class="product-foot"><span class="price">$45.00</span><button class="add-btn">+</button></div>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-media"><span class="tag outline">Importado</span><img src="https://www.accesorioseconomicos.com/products/catalogo/canopie-3x3.png" alt="Canopie 3x3 metros"></div>
+        <div class="product-body">
+          <span class="product-cat">Hogar</span>
+          <div class="product-title">Canopie importado · 3 × 3 m</div>
+          <div class="product-foot"><span class="price">$55.00</span><button class="add-btn">+</button></div>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-media"><span class="tag">Más vendido</span><img src="https://www.accesorioseconomicos.com/products/catalogo/taladro-2-baterias.png" alt="Taladro inalámbrico"></div>
+        <div class="product-body">
+          <span class="product-cat">Herramientas</span>
+          <div class="product-title">Taladro inalámbrico · 2 baterías</div>
+          <div class="product-foot"><span class="price">$20.00</span><button class="add-btn">+</button></div>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-media"><span class="tag red">Nuevo ingreso</span><img src="https://www.accesorioseconomicos.com/products/catalogo/compresor-pintura-uso.webp" alt="Compresor de pintura"></div>
+        <div class="product-body">
+          <span class="product-cat">Herramientas</span>
+          <div class="product-title">Compresor de pintura eléctrico</div>
+          <div class="product-foot"><span class="price">$22.50</span><button class="add-btn">+</button></div>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-media"><span class="tag red">Nuevo ingreso</span><img src="https://www.accesorioseconomicos.com/products/catalogo/set-ollas-13-piezas-20.jpg" alt="Set de ollas 13 piezas"></div>
+        <div class="product-body">
+          <span class="product-cat">Hogar</span>
+          <div class="product-title">Set de ollas · 13 piezas</div>
+          <div class="product-foot"><span class="price">$20.00</span><button class="add-btn">+</button></div>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-media"><span class="tag outline">Vigilancia</span><img src="https://www.accesorioseconomicos.com/products/catalogo/camara-wifi.jpg" alt="Cámara Wi-Fi"></div>
+        <div class="product-body">
+          <span class="product-cat">Tecnología</span>
+          <div class="product-title">Cámara Wi-Fi</div>
+          <div class="product-foot"><span class="price">$13.00</span><button class="add-btn">+</button></div>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-media"><span class="tag outline">Con apoyapiés</span><img src="https://www.accesorioseconomicos.com/products/catalogo/sillas-gamer.jpg" alt="Silla gamer"></div>
+        <div class="product-body">
+          <span class="product-cat">Oficina</span>
+          <div class="product-title">Silla gamer · con apoyapiés</div>
+          <div class="product-foot"><span class="price">$75.00</span><button class="add-btn">+</button></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="benefits" id="beneficios">
+  <div class="wrap">
+    <div class="benefit">
+      <span class="num">Precio</span>
+      <h3>Precios accesibles</h3>
+      <p>Ofertas y nuevos ingresos cada semana, marcados con claridad en cada producto.</p>
+    </div>
+    <div class="benefit">
+      <span class="num">Respaldo</span>
+      <h3>14 tiendas físicas</h3>
+      <p>Una empresa establecida, no un vendedor anónimo. Visitanos en las principales ciudades.</p>
+    </div>
+    <div class="benefit">
+      <span class="num">Garantía</span>
+      <h3>Por desperfectos de fábrica</h3>
+      <p>Conservá tu comprobante de compra y te respaldamos ante cualquier desperfecto.</p>
+    </div>
+    <div class="benefit">
+      <span class="num">Envío</span>
+      <h3>$3.50 a todo el país</h3>
+      <p>Tarifa fija por pedido, sin importar cuántos productos agregués.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="tiendas">
+  <div class="wrap stores">
+    <div class="copy">
+      <span class="tag outline">Encontrá tu tienda más cercana</span>
+      <h2>Catorce tiendas, un mismo compromiso.</h2>
+      <p>Estamos en San Miguel, San Salvador, Santa Tecla, Santa Ana, Usulután, Sonsonate, La Unión, Santa Rosa de Lima y más ciudades del país.</p>
+      <div class="city-chips">
+        <span>San Salvador</span><span>Santa Tecla</span><span>San Miguel</span>
+        <span>Santa Ana</span><span>Sonsonate</span><span>Usulután</span>
+        <span>La Unión</span><span>Santa Rosa de Lima</span>
+      </div>
+      <a class="btn primary" href="#">Consultar tienda cercana</a>
+    </div>
+    <div class="photo">
+      <img src="https://www.accesorioseconomicos.com/stores/14-tiendas.png" alt="Mapa de las 14 tiendas de Accesorios Económicos">
+    </div>
+  </div>
+</section>
+
+<section class="cta-band" id="contacto">
+  <div class="wrap">
+    <h2>¿Listo para armar tu pedido?</h2>
+    <div class="hero-cta">
+      <a class="btn primary" href="https://wa.me/50364549310?text=%C2%A1Hola!%20Quiero%20hacer%20un%20pedido%20en%20Accesorios%20Econ%C3%B3micos.">Ordenar por WhatsApp</a>
+      <a class="btn ghost" style="border-color:var(--ink)" href="#catalogo">Ver catálogo</a>
+    </div>
+  </div>
+</section>
+
+<footer class="site">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="foot-brand">
+          <img src="https://www.accesorioseconomicos.com/products/logo.jpg" alt="Logo">
+          <span class="word">ACCESORIOS ECONÓMICOS</span>
+        </div>
+        <p style="max-width:32ch;font-size:14px;">Productos útiles, precios bajos y atención cerca de vos, desde 2010.</p>
+      </div>
+      <div>
+        <h4>Explorar</h4>
+        <ul>
+          <li><a href="#catalogo">Catálogo</a></li>
+          <li><a href="#beneficios">Por qué elegirnos</a></li>
+          <li><a href="#tiendas">Tiendas</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contacto</h4>
+        <ul>
+          <li><a href="https://wa.me/50364549310">WhatsApp 6454-9310</a></li>
+          <li><a href="https://www.facebook.com/accesorioschinos">Facebook</a></li>
+          <li><a href="https://www.instagram.com/accesorios_economicossv/">Instagram</a></li>
+          <li><a href="https://www.tiktok.com/@accesorios_economicos">TikTok</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Políticas</h4>
+        <ul>
+          <li><a href="#">Garantía por desperfectos</a></li>
+          <li><a href="#">Envíos nacionales</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Accesorios Económicos</span>
+      <span>Precios sujetos a disponibilidad · Envío nacional $3.50 por pedido</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

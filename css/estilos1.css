@@ -1,0 +1,30 @@
+body {
+    background-color: lightblue;
+}
+
+div {
+    font-size: 20px;
+}
+
+h2 {
+    text-decoration: underline;
+    color: white;
+}
+
+.parrafo-uno {
+    color: navy;
+    font-weight: bold;
+}
+
+.parrafo-dos {
+    text-transform: uppercase;
+    text-align: justify;
+}
+
+.parrafo-tres {
+    font-size: 12px;
+}
+
+span {
+    font-style: italic;
+}
