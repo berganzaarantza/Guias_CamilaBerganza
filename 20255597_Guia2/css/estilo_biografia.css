@@ -1,0 +1,206 @@
+:root {
+  --durazno: #e8a87c;
+  --durazno-oscuro: #d38b5d;
+  --menta: #7fc8c0;
+  --tinta: #4a4441;
+  --gris: #8d8480;
+  --papel: #ffffff;
+  --papel-tibio: #fbf6f1;
+  --borde: #ece3db;
+}
+
+* { 
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box; 
+}
+
+body {
+  font-family: 'Josefin Sans', Arial, sans-serif;
+  font-weight: 300;
+  font-size: 17px;
+  line-height: 1.8;
+  color: var(--tinta);
+  background-color: var(--papel);
+}
+
+img {
+  max-width: 50%;
+  display: block;
+  margin: 0 auto;
+}
+
+a { 
+    color: var(--durazno-oscuro); text-decoration: none; 
+}
+
+a:hover { 
+    color: var(--menta); 
+}
+
+a:focus-visible { 
+    outline: 2px solid var(--menta); 
+    outline-offset: 3px; 
+}
+
+.encabezado { 
+    border-bottom: 1px solid var(--borde); 
+}
+
+.menu {
+  border-bottom: 1px solid var(--borde);
+  padding: 18px 20px;
+}
+
+.menu ul {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 32px;
+}
+
+.menu a {
+  color: var(--tinta);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 13px;
+  padding-bottom: 4px;
+  border-bottom: 2px solid transparent;
+  transition: border-color .3s, color .3s;
+}
+
+.menu a:hover, .menu a.activo { 
+    color: var(--menta);
+    border-bottom-color: var(--menta);
+}
+
+.nombre { 
+    text-align: center; 
+    padding: 55px 20px 45px; 
+    font-family: 'Grand Hotel', cursive;
+    font-size: 2.6rem;
+    font-weight: 400;
+    color: var(--durazno);
+    line-height: 1.1;
+}
+
+.seccion { 
+    padding: 70px 22px; 
+}
+
+.seccion--clara { 
+    background-color: var(--papel-tibio); 
+}
+
+.seccion > h2 {
+  font-weight: 400;
+  font-size: 1.7rem;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 6px;
+  margin-bottom: 14px;
+}
+
+.seccion > h2::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 2px;
+  margin: 14px auto 0;
+  background-color: var(--menta);
+}
+
+.foto {
+  max-width: 900px;
+  margin: 38px auto 34px;
+}
+
+.foto img { 
+    border-radius: 3px; 
+}
+
+
+.texto { 
+    max-width: 640px; margin: 0 auto; 
+}
+
+.texto p + p { 
+    margin-top: 18px; 
+}
+
+.texto .entrada:first-letter {
+  font-family: 'Grand Hotel', cursive;
+  font-size: 3.4rem;
+  color: var(--durazno);
+  float: left;
+  line-height: .9;
+  padding-right: 10px;
+}
+
+.linea-tiempo {
+  max-width: 620px;
+  margin: 40px auto 0;
+  list-style: none;
+  border-left: 2px solid var(--borde);
+}
+
+.linea-tiempo li {
+  position: relative;
+  padding: 0 0 30px 30px;
+}
+
+.linea-tiempo li::before {
+  content: "";
+  position: absolute;
+  left: -8px;
+  top: 10px;
+  width: 14px;
+  height: 14px;
+  background-color: var(--durazno);
+  border: 3px solid var(--papel-tibio);
+  border-radius: 50%;
+}
+
+.linea-tiempo li:last-child { 
+    padding-bottom: 0; 
+}
+
+.linea-tiempo h3 {
+  font-weight: 600;
+  font-size: 1rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--durazno-oscuro);
+}
+
+.contenido-linea {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.img-linea {
+  width: 140px;
+  height: 140px; 
+  object-fit: cover;
+  border-radius: 8px;
+  margin: 0;
+  max-width: 100%;
+  flex-shrink: 0;
+}
+
+.pie {
+  background-color: var(--papel-tibio);
+  border-top: 1px solid var(--borde);
+  text-align: center;
+  padding: 40px 20px;
+  font-size: 14px;
+  color: var(--gris);
+}
+
+.firma {
+  font-family: 'Grand Hotel', cursive;
+  font-size: 2.2rem;
+  color: var(--durazno);
+}
