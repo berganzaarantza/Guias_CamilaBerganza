@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inicio — Accesorios Económicos</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <input type="checkbox" id="cart-toggle" class="hidden-hack">
+  <div class="toast-message" id="toast">
+    <span class="toast-icon">✓</span> <span id="toast-text">Producto agregado</span>
+  </div>
+
+  <div class="utility">
+    <div class="utility-content">
+      <span>📞 WhatsApp 6454-9310</span>
+      <span>🇸🇻 14 tiendas en El Salvador</span>
+      <span>Envío nacional $3.50 por pedido</span>
+    </div>
+  </div>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="index.html">
+        <img src="https://www.accesorioseconomicos.com/products/logo.jpg" alt="Logo Accesorios Económicos">
+        <div class="brand-text">
+          <span class="word">ACCESORIOS<span class="dot">.</span></span>
+          <span class="sub">Tienda en línea · El Salvador</span>
+        </div>
+      </a>
+      
+      <nav class="main-nav">
+        <a href="index.html" class="icon-btn active">Inicio</a>
+        <a href="nosotros.html" class="icon-btn">Nosotros</a>
+        <a href="faq.html" class="icon-btn">Ayuda / FAQ</a>
+      </nav>
+
+      <div class="search-box">
+        <input type="text" placeholder="Buscar productos...">
+        <button class="search-submit">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </button>
+      </div>
+      
+      <label for="cart-toggle" class="icon-btn cart-btn-trigger">
+        Mi pedido <span class="cart-count" id="cart-badge">0</span>
+      </label>
+    </div>
+  </header>
+
+  <main class="site-main">
+    <section class="section promo">
+      <div class="grid-12">
+        <div class="promo-copy">
+          <span class="eyebrow">Oferta de la semana</span>
+          <h1>Hidrolavadora inalámbrica <br>2 baterías — $16.50</h1>
+          <p>Importación directa desde China. Precios accesibles, garantía por desperfectos de fábrica y envío a todo El Salvador por $3.50 fijo.</p>
+          <a class="btn primary" href="index.html#catalogo">Ver catálogo</a>
+        </div>
+        <div class="promo-media">
+          <img src="https://www.accesorioseconomicos.com/products/hidrolavadora.jpg" alt="Hidrolavadora en oferta">
+        </div>
+      </div>
+    </section>
+
+    <section class="section catalog" id="catalogo">
+      <div class="grid-12">
+        <div class="section-head">
+          <h2>Catálogo Destacado</h2>
+          <p>Precio de tienda + $3.50 de envío único por pedido.</p>
+        </div>
+        
+        <article class="product-card">
+          <div class="product-media"><span class="badge">Oferta</span><img src="https://www.accesorioseconomicos.com/products/hidrolavadora.jpg" alt="Hidrolavadora"></div>
+          <div class="product-body">
+            <span class="product-cat">Herramientas</span>
+            <h3 class="product-title">Hidrolavadora · 2 baterías</h3>
+            <div class="product-foot"><span class="price">$16.50</span><button class="add-btn" data-id="1">+</button></div>
+          </div>
+        </article>
+
+        <article class="product-card">
+          <div class="product-media"><span class="badge">Nuevo</span><img src="https://www.accesorioseconomicos.com/products/catalogo/silla-ergonomica.jpeg" alt="Silla Ergonómica"></div>
+          <div class="product-body">
+            <span class="product-cat">Oficina</span>
+            <h3 class="product-title">Silla ergonómica</h3>
+            <div class="product-foot"><span class="price">$45.00</span><button class="add-btn" data-id="2">+</button></div>
+          </div>
+        </article>
+
+        <article class="product-card">
+          <div class="product-media"><img src="https://www.accesorioseconomicos.com/products/catalogo/canopie-3x3.png" alt="Canopie"></div>
+          <div class="product-body">
+            <span class="product-cat">Hogar</span>
+            <h3 class="product-title">Canopie importado 3 × 3 m</h3>
+            <div class="product-foot"><span class="price">$55.00</span><button class="add-btn" data-id="3">+</button></div>
+          </div>
+        </article>
+
+        <article class="product-card">
+          <div class="product-media"><span class="badge">Recomendado</span><img src="https://www.accesorioseconomicos.com/products/catalogo/extintores-certificados.jpg" alt="Extintor ABC"></div>
+          <div class="product-body">
+            <span class="product-cat">Vehículo</span>
+            <h3 class="product-title">Extintor ABC · 10 lb</h3>
+            <div class="product-foot"><span class="price">$18.00</span><button class="add-btn" data-id="4">+</button></div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section benefits">
+      <div class="grid-12">
+        <div class="benefit"><div class="ico">✦</div><div><h3>Precios accesibles</h3><p>Nuevos ingresos semanales.</p></div></div>
+        <div class="benefit"><div class="ico">⌂</div><div><h3>Tiendas físicas</h3><p>En las principales ciudades.</p></div></div>
+        <div class="benefit"><div class="ico">✓</div><div><h3>Garantía</h3><p>Por desperfectos de fábrica.</p></div></div>
+        <div class="benefit"><div class="ico">○</div><div><h3>Envío $3.50</h3><p>Tarifa plana nacional.</p></div></div>
+      </div>
+    </section>
+
+    <section class="section stores">
+      <div class="grid-12">
+        <div class="stores-copy">
+          <h2 style="font-size: 32px; font-weight: 500; margin-bottom: 16px;">14 Tiendas a tu alcance</h2>
+          <p style="color: var(--color-muted-gray); margin-bottom: 32px; font-size: 16px;">Nuestra expansión ha sido pensada para estar donde nos necesitas. Contamos con presencia física en todo el país y opción de retiro sin costo de envío.</p>
+          <div class="city-chips"><span>San Salvador</span><span>Santa Tecla</span><span>San Miguel</span><span>Santa Ana</span><span>Sonsonate</span><span>Usulután</span><span>La Unión</span></div>
+        </div>
+        <div class="stores-media">
+          <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&q=80&w=800" alt="Vista interior de sucursal">
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="grid-12">
+      <div class="footer-top">
+        <div class="footer-brand-col">
+          <div class="brand-logo-footer"><img src="https://www.accesorioseconomicos.com/products/logo.jpg" alt="Logo"><span class="word">ACCESORIOS<span class="dot">.</span></span></div>
+          <p>Productos útiles, precios bajos y atención cerca de vos, desde 2010.</p>
+        </div>
+        <div class="footer-links">
+          <h4>Explorar</h4><a href="index.html#catalogo">Catálogo</a><a href="nosotros.html">Tiendas</a>
+        </div>
+        <div class="footer-links">
+          <h4>Contacto</h4><a href="https://wa.me/50364549310" target="_blank" rel="noopener noreferrer">WhatsApp 6454-9310</a><a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer">Facebook</a><a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer">Instagram</a>
+        </div>
+        <div class="footer-links">
+          <h4>Políticas</h4><a href="faq.html">Garantía</a><a href="faq.html">Envíos</a>
+        </div>
+      </div>
+      <div class="footer-bottom"><span>© 2026 Accesorios Económicos</span><span>Envío nacional $3.50</span></div>
+    </div>
+  </footer>
+
+  <label for="cart-toggle" class="overlay"></label>
+  <div class="drawer">
+    <div class="drawer-head"><h3>Mi pedido</h3><label for="cart-toggle" class="drawer-close">✕</label></div>
+    <div class="drawer-body" id="cart-items-container"></div>
+    <div class="drawer-foot" id="cart-footer" style="display:none;">
+      <div class="checkout-form">
+        <div class="field"><label for="custName">Tu Nombre</label><input type="text" id="custName" placeholder="Ej. Ana" required></div>
+        <div class="field"><label for="custAddress">Dirección de Envío / Sucursal</label><input type="text" id="custAddress" placeholder="Ej. Santa Tecla..." required></div>
+      </div>
+      <div class="subtotal-row"><span>Subtotal:</span><span id="cart-subtotal">$0.00</span></div>
+      <button class="send-btn" id="send-whatsapp-btn">Enviar pedido por WhatsApp</button>
+    </div>
+  </div>
+
+  <script src="cart.js"></script>
+</body>
+</html>

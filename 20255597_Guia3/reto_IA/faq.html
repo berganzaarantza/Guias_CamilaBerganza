@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Proceso de Compra y Ayuda — Accesorios Económicos</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <input type="checkbox" id="cart-toggle" class="hidden-hack">
+  <div class="toast-message" id="toast">
+    <span class="toast-icon">✓</span> <span id="toast-text">Producto agregado</span>
+  </div>
+
+  <div class="utility">
+    <div class="utility-content">
+      <span>📞 WhatsApp 6454-9310</span>
+      <span>🇸🇻 14 tiendas en El Salvador</span>
+      <span>Envío nacional $3.50 por pedido</span>
+    </div>
+  </div>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="index.html">
+        <img src="https://www.accesorioseconomicos.com/products/logo.jpg" alt="Logo Accesorios Económicos">
+        <div class="brand-text">
+          <span class="word">ACCESORIOS<span class="dot">.</span></span>
+          <span class="sub">Tienda en línea · El Salvador</span>
+        </div>
+      </a>
+      
+      <nav class="main-nav">
+        <a href="index.html" class="icon-btn">Inicio</a>
+        <a href="nosotros.html" class="icon-btn">Nosotros</a>
+        <a href="faq.html" class="icon-btn active">Ayuda / FAQ</a>
+      </nav>
+
+      <div class="search-box">
+        <input type="text" placeholder="Buscar productos...">
+        <button class="search-submit">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </button>
+      </div>
+      
+      <label for="cart-toggle" class="icon-btn cart-btn-trigger">
+        Mi pedido <span class="cart-count" id="cart-badge">0</span>
+      </label>
+    </div>
+  </header>
+
+  <main class="site-main">
+    <section class="page-header wrap">
+      <span class="eyebrow" style="display:block; text-align:center;">Ayuda</span>
+      <h1>Proceso de Compra</h1>
+      <p>Encuentra respuestas rápidas sobre nuestra tarifa de envíos, métodos de pago y la cobertura de nuestras garantías por defectos de fábrica.</p>
+    </section>
+
+    <section class="faq-container wrap">
+      <div class="faq-card">
+        <h2>Envíos y Entregas</h2>
+        <details>
+          <summary>¿Cómo funciona la tarifa de $3.50?</summary>
+          <div class="details-content">
+            Manejamos una tarifa plana a nivel nacional. Sin importar si pides una cámara o cinco sillas ergonómicas, el costo de envío siempre será de $3.50 por pedido en toda la República de El Salvador.
+          </div>
+        </details>
+        <details>
+          <summary>¿Cuáles son los tiempos de entrega por departamento?</summary>
+          <div class="details-content">
+            Para San Salvador y La Libertad (Santa Tecla, Antiguo Cuscatlán), los pedidos se entregan en un rango de <strong>1 a 2 días hábiles</strong>. Para el resto de los departamentos del país (Occidente y Oriente), las entregas se realizan a través de encomendistas en un lapso de <strong>2 a 4 días hábiles</strong>.
+          </div>
+        </details>
+      </div>
+
+      <div class="faq-card">
+        <h2>Garantías y Devoluciones</h2>
+        <details>
+          <summary>¿Qué cubre la garantía por desperfectos de fábrica?</summary>
+          <div class="details-content">
+            Todos nuestros productos electrónicos y herramientas cuentan con 30 días de garantía. Esta cubre fallas en el motor, encendido o funcionamiento interno no derivado de golpes, humedad o mal uso. Para hacerla efectiva, debes presentar tu comprobante de compra (digital o físico).
+          </div>
+        </details>
+        <details>
+          <summary>¿Cómo solicito un cambio?</summary>
+          <div class="details-content">
+            Puedes acercarte a cualquiera de nuestras 14 sucursales con tu artículo en su caja original, o escribirnos a nuestro WhatsApp enviando un video que demuestre el desperfecto para coordinar la recolección sin costo extra.
+          </div>
+        </details>
+      </div>
+
+      <!-- Tarjeta CTA final -->
+      <div class="promo-media" style="padding:48px; text-align:center; height: auto;">
+        <h2 style="font-size:24px; margin-bottom:12px; font-weight:500;">¿No encontraste tu respuesta?</h2>
+        <p style="color:var(--color-muted-gray); margin-bottom:24px;">Escribinos directo por WhatsApp y te ayudamos en minutos.</p>
+        <div class="promo-cta" style="justify-content:center;">
+          <a class="btn primary" href="https://wa.me/50364549310" target="_blank">Escribir por WhatsApp</a>
+          <a class="btn secondary" href="index.html#catalogo">Ver catálogo</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="grid-12">
+      <div class="footer-top">
+        <div class="footer-brand-col">
+          <div class="brand-logo-footer"><img src="https://www.accesorioseconomicos.com/products/logo.jpg" alt="Logo"><span class="word">ACCESORIOS<span class="dot">.</span></span></div>
+          <p>Productos útiles, precios bajos y atención cerca de vos, desde 2010.</p>
+        </div>
+        <div class="footer-links">
+          <h4>Explorar</h4><a href="index.html#catalogo">Catálogo</a><a href="nosotros.html">Tiendas</a>
+        </div>
+        <div class="footer-links">
+          <h4>Contacto</h4><a href="https://wa.me/50364549310" target="_blank" rel="noopener noreferrer">WhatsApp 6454-9310</a><a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer">Facebook</a><a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer">Instagram</a>
+        </div>
+        <div class="footer-links">
+          <h4>Políticas</h4><a href="faq.html">Garantía</a><a href="faq.html">Envíos</a>
+        </div>
+      </div>
+      <div class="footer-bottom"><span>© 2026 Accesorios Económicos</span><span>Envío nacional $3.50</span></div>
+    </div>
+  </footer>
+
+  <label for="cart-toggle" class="overlay"></label>
+  <div class="drawer">
+    <div class="drawer-head"><h3>Mi pedido</h3><label for="cart-toggle" class="drawer-close">✕</label></div>
+    <div class="drawer-body" id="cart-items-container"></div>
+    <div class="drawer-foot" id="cart-footer" style="display:none;">
+      <div class="checkout-form">
+        <div class="field"><label for="custName">Tu Nombre</label><input type="text" id="custName" placeholder="Ej. Ana" required></div>
+        <div class="field"><label for="custAddress">Dirección de Envío / Sucursal</label><input type="text" id="custAddress" placeholder="Ej. Santa Tecla..." required></div>
+      </div>
+      <div class="subtotal-row"><span>Subtotal:</span><span id="cart-subtotal">$0.00</span></div>
+      <button class="send-btn" id="send-whatsapp-btn">Enviar pedido por WhatsApp</button>
+    </div>
+  </div>
+
+  <script src="cart.js"></script>
+</body>
+</html>
