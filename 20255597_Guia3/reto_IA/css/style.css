@@ -143,6 +143,7 @@ button, label { font-family: inherit; cursor: pointer; border: none; }
 .about-content { padding: 48px; }
 .about-content h2 { font-size: 28px; margin-bottom: 16px; letter-spacing: -0.05em; font-weight: 500; }
 .about-content p { color: var(--color-muted-gray); font-size: 16px; margin-bottom: 24px; }
+.about-grid .promo-media { grid-column: 1 / -1; }
 
 /* Página FAQ */
 .faq-container { max-width: 800px; margin: 0 auto; padding-bottom: 80px; }
