@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de pedidos de una cafetería</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;700&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --cielo: #dce9f7;    
+            --escarcha: #f4f8fd;   
+            --nube: #e8f1fb;        
+            --hielo: #b9d2ee;      
+            --pervinca: #9bbfe8;    
+            --tinta: #1f3552;       
+            --tinta-suave: #4f6682; 
+        }
+
+        body {
+            background-color: var(--cielo);
+            color: var(--tinta);
+            font-family: "Figtree", system-ui, -apple-system, "Segoe UI", sans-serif;
+        }
+
+        h1, h2, .linea-total { font-family: "Bricolage Grotesque", "Figtree", system-ui, sans-serif; }
+
+        .titulo {
+            font-size: clamp(2rem, 4.5vw, 3.1rem);
+            font-weight: 700;
+            line-height: 1.05;
+            letter-spacing: -0.02em;
+        }
+        .subtitulo, .texto-suave { color: var(--tinta-suave); }
+
+        h2 { font-size: 1.4rem; font-weight: 700; letter-spacing: -0.01em; }
+
+        .form-label { font-weight: 600; font-size: 0.95rem; }
+
+        .formulario {
+            --bs-card-bg: var(--escarcha);
+            --bs-card-border-color: var(--hielo);
+            --bs-card-border-radius: 1.25rem;
+            --bs-card-color: var(--tinta);
+        }
+
+        .form-control, .input-group-text {
+            border-color: var(--hielo);
+            color: var(--tinta);
+        }
+        .input-group-text { background-color: var(--nube); }
+        .form-control:focus {
+            border-color: #5b8fd1;
+            box-shadow: 0 0 0 0.25rem rgba(91, 143, 209, 0.28);
+        }
+        .invalid-feedback { color: #b02a37; font-weight: 500; }
+
+        .btn-pedido {
+            --bs-btn-color: var(--tinta);
+            --bs-btn-bg: var(--pervinca);
+            --bs-btn-border-color: var(--pervinca);
+            --bs-btn-hover-color: var(--tinta);
+            --bs-btn-hover-bg: #86b0e2;
+            --bs-btn-hover-border-color: #86b0e2;
+            --bs-btn-active-color: var(--tinta);
+            --bs-btn-active-bg: #7aa6df;
+            --bs-btn-active-border-color: #7aa6df;
+            --bs-btn-focus-shadow-rgb: 91, 143, 209;
+            font-weight: 600;
+        }
+        .btn-suave {
+            --bs-btn-color: var(--tinta);
+            --bs-btn-border-color: var(--pervinca);
+            --bs-btn-hover-color: var(--tinta);
+            --bs-btn-hover-bg: #d3e3f6;
+            --bs-btn-hover-border-color: var(--pervinca);
+            --bs-btn-active-color: var(--tinta);
+            --bs-btn-active-bg: #c4d9f1;
+            --bs-btn-active-border-color: var(--pervinca);
+            --bs-btn-focus-shadow-rgb: 91, 143, 209;
+            font-weight: 500;
+        }
+        .btn-quitar {
+            --bs-btn-color: #8a3b4d;
+            --bs-btn-border-color: #d9aab5;
+            --bs-btn-hover-color: #6f2b3b;
+            --bs-btn-hover-bg: #f7e3e7;
+            --bs-btn-hover-border-color: #d9aab5;
+            --bs-btn-active-color: #6f2b3b;
+            --bs-btn-active-bg: #f1d3da;
+            --bs-btn-active-border-color: #d9aab5;
+            --bs-btn-focus-shadow-rgb: 138, 59, 77;
+            font-weight: 500;
+        }
+
+        .filtros {
+            background-color: var(--nube);
+            border-radius: 0.9rem;
+            padding: 1rem;
+        }
+
+        .comanda {
+            --bs-card-bg: var(--escarcha);
+            --bs-card-border-width: 0;
+            --bs-card-color: var(--tinta);
+            border-radius: 0.9rem 0.9rem 0 0;
+            margin-bottom: 10px;
+            position: relative;
+            filter: drop-shadow(0 14px 16px rgba(31, 53, 82, 0.14));
+        }
+        .comanda::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: -10px;
+            height: 10px;
+            background: radial-gradient(circle at 10px 0, var(--escarcha) 9px, transparent 9.5px) repeat-x;
+            background-size: 20px 10px;
+        }
+
+        .tabla-comanda { --bs-table-bg: transparent; --bs-table-color: var(--tinta); }
+        .tabla-comanda > thead > tr > th {
+            background-color: #d5e4f5;
+            color: var(--tinta);
+            font-weight: 600;
+            border-bottom: 2px solid var(--pervinca);
+        }
+        .tabla-comanda > tbody > tr > td { border-bottom: 2px dotted var(--hielo); }
+        .tabla-comanda > tbody > tr:hover > td { background-color: var(--nube); }
+        td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+        .vacio { color: var(--tinta-suave); }
+
+        .perforacion {
+            border-top: 2px dashed var(--pervinca);
+            margin-top: 1.25rem;
+            padding-top: 1rem;
+        }
+        .linea { display: flex; align-items: baseline; gap: 0.5rem; }
+        .linea strong { font-variant-numeric: tabular-nums; }
+        .relleno {
+            flex: 1;
+            border-bottom: 2px dotted var(--hielo);
+            transform: translateY(-0.25rem);
+        }
+        .linea-total { font-size: 1.7rem; margin-top: 0.4rem; }
+        .linea-total strong { font-weight: 700; }
+    </style>
+    <script src="pedidos.js" defer></script>
+</head>
+
+<body>
+    <header class="container pt-5 pb-4">
+        <h1 class="titulo mb-2">Pedidos de una cafetería</h1>
+    </header>
+
+    <main class="container pb-5">
+        <div class="row g-4">
+
+            <section class="col-lg-4">
+                <div class="card formulario">
+                    <div class="card-body p-4">
+                        <h2 class="mb-3">Nuevo pedido</h2>
+
+                        <form id="formPedido" novalidate>
+                            <div class="mb-3">
+                                <label for="producto" class="form-label">Producto</label>
+                                <input type="text" id="producto" class="form-control"
+                                    placeholder="Café americano" autocomplete="off" required>
+                                <div id="errorProducto" class="invalid-feedback"></div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="precio" class="form-label">Precio unitario</label>
+                                <div class="input-group has-validation">
+                                    <span class="input-group-text">$</span>
+                                    <input type="number" id="precio" class="form-control"
+                                        step="0.01" min="0.01" placeholder="2.50" required>
+                                    <div id="errorPrecio" class="invalid-feedback"></div>
+                                </div>
+                            </div>
+
+                            <div class="mb-4">
+                                <label for="cantidad" class="form-label">Cantidad</label>
+                                <input type="number" id="cantidad" class="form-control"
+                                    step="1" min="1" placeholder="3" required>
+                                <div id="errorCantidad" class="invalid-feedback"></div>
+                            </div>
+
+                            <button type="submit" id="btnAgregar" class="btn btn-pedido w-100 py-2">Agregar pedido</button>
+                        </form>
+                    </div>
+                </div>
+            </section>
+
+            <section class="col-lg-8">
+                <div class="card comanda">
+                    <div class="card-body p-4">
+                        <h2 class="mb-3">Pedidos registrados</h2>
+
+                        <div class="filtros mb-3">
+                            <div class="row g-2 align-items-start">
+                                <div class="col-sm-5">
+                                    <label for="precioMaximo" class="form-label">Precio máximo</label>
+                                    <div class="input-group has-validation">
+                                        <span class="input-group-text">$</span>
+                                        <input type="number" id="precioMaximo" class="form-control"
+                                            step="0.01" min="0.01" placeholder="3.00">
+                                        <div id="errorPrecioMaximo" class="invalid-feedback"></div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-7 d-flex flex-wrap gap-2 align-items-end" style="min-height: 62px;">
+                                    <button type="button" id="btnFiltrar" class="btn btn-pedido">Filtrar productos</button>
+                                    <button type="button" id="btnMostrarTodos" class="btn btn-suave">Mostrar todos</button>
+                                    <button type="button" id="btnLimpiar" class="btn btn-quitar ms-sm-auto">Limpiar pedidos</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <p id="estadoFiltro" class="small texto-suave mb-3" aria-live="polite"></p>
+
+                        <div class="table-responsive">
+                            <table class="table tabla-comanda align-middle mb-0">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Producto</th>
+                                        <th scope="col" class="num">Precio unitario</th>
+                                        <th scope="col" class="num">Cantidad</th>
+                                        <th scope="col" class="num">Subtotal</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="cuerpoTabla"></tbody>
+                            </table>
+                        </div>
+
+                        <div class="perforacion" aria-live="polite">
+                            <div class="linea">
+                                <span>Unidades solicitadas</span>
+                                <span class="relleno" aria-hidden="true"></span>
+                                <strong id="totalUnidades">0</strong>
+                            </div>
+                            <div class="linea linea-total">
+                                <span>Monto total</span>
+                                <span class="relleno" aria-hidden="true"></span>
+                                <strong id="montoTotal">$0.00</strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </main>
+</body>
+</html>
