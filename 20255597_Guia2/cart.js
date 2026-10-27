@@ -4,18 +4,18 @@
    =========================================================== */
 
 const PRODUCTS = [
-  {id:1, name:"Hidrolavadora · 2 baterías", price:16.50, cat:"Herramientas", badge:"Oferta", img:"https://www.accesorioseconomicos.com/products/hidrolavadora.jpg"},
-  {id:2, name:"Silla ergonómica", price:45.00, cat:"Oficina", badge:"Nuevo", img:"https://www.accesorioseconomicos.com/products/catalogo/silla-ergonomica.jpeg"},
-  {id:3, name:"Canopie importado 3 × 3 m", price:55.00, cat:"Hogar", badge:"", img:"https://www.accesorioseconomicos.com/products/catalogo/canopie-3x3.png"},
-  {id:4, name:"Extintor ABC · 10 lb", price:18.00, cat:"Vehículo", badge:"Recomendado", img:"https://www.accesorioseconomicos.com/products/catalogo/extintores-certificados.jpg"},
-  {id:5, name:"Taladro inalámbrico · 2 baterías", price:20.00, cat:"Herramientas", badge:"", img:"https://www.accesorioseconomicos.com/products/catalogo/taladro-2-baterias.png"},
-  {id:6, name:"Compresor de pintura eléctrico", price:22.50, cat:"Herramientas", badge:"Nuevo", img:"https://www.accesorioseconomicos.com/products/catalogo/compresor-pintura-uso.webp"},
-  {id:7, name:"Set de ollas · 13 piezas", price:20.00, cat:"Hogar", badge:"Nuevo", img:"https://www.accesorioseconomicos.com/products/catalogo/set-ollas-13-piezas-20.jpg"},
-  {id:8, name:"Cámara Wi-Fi", price:13.00, cat:"Tecnología", badge:"", img:"https://www.accesorioseconomicos.com/products/catalogo/camara-wifi.jpg"},
-  {id:9, name:"Silla gamer · con apoyapiés", price:75.00, cat:"Oficina", badge:"", img:"https://www.accesorioseconomicos.com/products/catalogo/sillas-gamer.jpg"},
-  {id:10, name:"Podadora inalámbrica", price:25.00, cat:"Herramientas", badge:"Oferta", img:"https://www.accesorioseconomicos.com/products/catalogo/podadora.jpg"},
-  {id:11, name:"Horno 3 en 1", price:30.00, cat:"Hogar", badge:"Nuevo", img:"https://www.accesorioseconomicos.com/products/catalogo/horno-3-en-1.png"},
-  {id:12, name:"Mini set de cubos · 10 piezas", price:5.00, cat:"Herramientas", badge:"", img:"https://www.accesorioseconomicos.com/products/catalogo/mini-set-cubos-10.jpg"},
+  {id:1, name:"Hidrolavadora · 2 baterías", price:16.50, cat:"Herramientas", badge:"Oferta", img:"https://horizons-cdn.hostinger.com/ceccc142-b4d5-4623-afc3-0d39b8f200d4/5066148e1d5d8148950a239f30273864.jpg"},
+  {id:2, name:"Silla ergonómica", price:45.00, cat:"Oficina", badge:"Nuevo", img:"https://horizons-cdn.hostinger.com/ceccc142-b4d5-4623-afc3-0d39b8f200d4/0db6856348ed558d3ca9a9bb31731547.png"},
+  {id:3, name:"Canopie importado 3 × 3 m", price:55.00, cat:"Hogar", badge:"", img:"https://horizons-cdn.hostinger.com/ceccc142-b4d5-4623-afc3-0d39b8f200d4/52d091f57ded1ee9a60f4ba314a6cc28.png"},
+  {id:4, name:"Extintor ABC · 10 lb", price:18.00, cat:"Vehículo", badge:"Recomendado", img:"https://horizons-cdn.hostinger.com/ceccc142-b4d5-4623-afc3-0d39b8f200d4/30f140148ebc305c9bd9a43e72ad9094.png"},
+  {id:5, name:"Taladro inalámbrico · 2 baterías", price:20.00, cat:"Herramientas", badge:"", img:"https://horizons-cdn.hostinger.com/ceccc142-b4d5-4623-afc3-0d39b8f200d4/ac264883b9168589b889fc16c3bcf429.jpg"},
+  {id:6, name:"Compresor de pintura eléctrico", price:22.50, cat:"Herramientas", badge:"Nuevo", img:"https://horizons-cdn.hostinger.com/ceccc142-b4d5-4623-afc3-0d39b8f200d4/3ebb043a626e3beb7c23b8d30c016b78.jpg"},
+  {id:7, name:"Set de ollas · 13 piezas", price:20.00, cat:"Hogar", badge:"Nuevo", img:"https://images.hostinger.com/5bb00f30-06d4-41c6-be32-b44226d50cb5.png"},
+  {id:8, name:"Cámara Wi-Fi", price:13.00, cat:"Tecnología", badge:"", img:"https://horizons-cdn.hostinger.com/ceccc142-b4d5-4623-afc3-0d39b8f200d4/4517974062053b7a88d59dc9d274e378.jpg"},
+  {id:9, name:"Silla gamer · con apoyapiés", price:75.00, cat:"Oficina", badge:"", img:"https://horizons-cdn.hostinger.com/ceccc142-b4d5-4623-afc3-0d39b8f200d4/3b14fe32e798cebfb234c58e0a5a0537.jpg"},
+  {id:10, name:"Podadora inalámbrica", price:25.00, cat:"Herramientas", badge:"Oferta", img:"https://horizons-cdn.hostinger.com/ceccc142-b4d5-4623-afc3-0d39b8f200d4/31202c4e4c556f5d22c410414bf736e3.jpg"},
+  {id:11, name:"Horno 3 en 1", price:30.00, cat:"Hogar", badge:"Nuevo", img:"https://horizons-cdn.hostinger.com/ceccc142-b4d5-4623-afc3-0d39b8f200d4/e5e63a4bea28f7ed30004282037a0009.jpg"},
+  {id:12, name:"Mini set de cubos · 10 piezas", price:5.00, cat:"Herramientas", badge:"", img:"https://horizons-cdn.hostinger.com/ceccc142-b4d5-4623-afc3-0d39b8f200d4/ccb36ca3d05327b1a0ce55876d6c5c33.jpg"},
 ];
 
 const CART_KEY = "ae_cart";

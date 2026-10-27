@@ -1,9 +1,9 @@
 // Base de datos de productos simulada
 const productsDB = [
-  { id: 1, name: "Hidrolavadora · 2 baterías", price: 16.50, img: "https://www.accesorioseconomicos.com/products/hidrolavadora.jpg" },
-  { id: 2, name: "Silla ergonómica", price: 45.00, img: "https://www.accesorioseconomicos.com/products/catalogo/silla-ergonomica.jpeg" },
-  { id: 3, name: "Canopie importado 3 × 3 m", price: 55.00, img: "https://www.accesorioseconomicos.com/products/catalogo/canopie-3x3.png" },
-  { id: 4, name: "Extintor ABC · 10 lb", price: 18.00, img: "https://www.accesorioseconomicos.com/products/catalogo/extintores-certificados.jpg" }
+  { id: 1, name: "Hidrolavadora · 2 baterías", price: 16.50, img: "https://horizons-cdn.hostinger.com/ceccc142-b4d5-4623-afc3-0d39b8f200d4/5066148e1d5d8148950a239f30273864.jpg" },
+  { id: 2, name: "Silla ergonómica", price: 45.00, img: "https://horizons-cdn.hostinger.com/ceccc142-b4d5-4623-afc3-0d39b8f200d4/0db6856348ed558d3ca9a9bb31731547.png" },
+  { id: 3, name: "Canopie importado 3 × 3 m", price: 55.00, img: "https://horizons-cdn.hostinger.com/ceccc142-b4d5-4623-afc3-0d39b8f200d4/52d091f57ded1ee9a60f4ba314a6cc28.png" },
+  { id: 4, name: "Extintor ABC · 10 lb", price: 18.00, img: "https://horizons-cdn.hostinger.com/ceccc142-b4d5-4623-afc3-0d39b8f200d4/30f140148ebc305c9bd9a43e72ad9094.png" }
 ];
 
 // INICIALIZAR CARRITO DESDE LOCALSTORAGE
