@@ -1,6 +1,19 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+  <script>
+document.addEventListener('error', function (e) {
+  var img = e.target;
+  if (!img || img.tagName !== 'IMG' || img.dataset.ph) return;
+  img.dataset.ph = '1';
+  var t = (img.alt || 'Imagen').replace(/[<>&"]/g, '');
+  var svg = '<svg xmlns="http://www.w3.org/2000/svg" width="600" height="600" viewBox="0 0 600 600">' +
+    '<rect width="600" height="600" fill="#e7e2d3"/>' +
+    '<text x="300" y="300" text-anchor="middle" dominant-baseline="middle" ' +
+    'font-family="Arial,sans-serif" font-size="28" fill="#6b6450">' + t + '</text></svg>';
+  img.src = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(svg);
+}, true);
+</script>
 <meta charset="UTF-8">
 <title>Accesorios Económicos — Propuesta de rediseño</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
