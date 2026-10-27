@@ -29,6 +29,10 @@ ul.list{list-style:none;margin:0;padding:0;display:grid;gap:.6rem;grid-template-
 ul.list a{display:flex;align-items:center;justify-content:space-between;gap:.75rem;height:100%;padding:.9rem 1rem;background:var(--surface);border:1px solid var(--line);border-radius:10px;text-decoration:none;font-family:system-ui,sans-serif;font-size:.97rem;line-height:1.35}
 ul.list a:hover,ul.list a:focus-visible{border-color:var(--accent);outline:2px solid var(--accent-soft)}
 .tag{flex:none;font-size:.75rem;padding:.15rem .55rem;border-radius:999px;background:var(--ai-soft);color:var(--ai);font-weight:600}
+figure.video{margin:0 0 1.25rem;max-width:40rem}
+figure.video figcaption{font-family:system-ui,sans-serif;font-size:.9rem;font-weight:600;margin-bottom:.5rem}
+figure.video .frame{position:relative;aspect-ratio:16/9;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:#000}
+figure.video iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
 [hidden]{display:none!important}
 footer{padding:1.75rem 0 3rem;border-top:1px solid var(--line);color:var(--muted);font-family:system-ui,sans-serif;font-size:.9rem}
 footer a{color:var(--accent)}
@@ -39,7 +43,7 @@ footer a{color:var(--accent)}
 <header>
   <div class="wrap">
     <h1>Camila Berganza</h1>
-    <p>Guías de la materia Desarrollo Web I.</p>
+    <p>Guías y retos de la materia Desarrollo Web I: de HTML y CSS a posicionamiento y JavaScript.</p>
     <div class="bar">
       <nav class="chips" aria-label="Ir a una guía">
         <a href="#guia1">Guía 1</a><a href="#guia2">Guía 2</a><a href="#guia3">Guía 3</a><a href="#guia5">Guía 5</a>
@@ -52,6 +56,10 @@ footer a{color:var(--accent)}
 <main class="wrap">
   <section id="guia1">
     <h2>Guía 1</h2><p class="sub">Estilos, texto y tablas</p>
+    <figure class="video">
+      <figcaption>Video explicativo Guía 1</figcaption>
+      <div class="frame"><iframe src="https://www.youtube.com/embed/NNZB_LQoN30?si=MC7Wt65LCv7VY_Pp" title="Video explicativo Guía 1" loading="lazy" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+    </figure>
     <ul class="list">
       <li><a target="_blank" rel="noopener" href="estilos_embebidos.html">Ejercicio 1: Estilos embebidos</a></li>
       <li><a target="_blank" rel="noopener" href="ejemplo2.html">Ejercicio 2: Instrucciones para llorar</a></li>
@@ -64,6 +72,10 @@ footer a{color:var(--accent)}
 
   <section id="guia2">
     <h2>Guía 2</h2><p class="sub">Páginas con varias secciones</p>
+    <figure class="video">
+      <figcaption>Video explicativo Guía 2</figcaption>
+      <div class="frame"><iframe src="https://www.youtube.com/embed/bQlty7DtAvg?si=fIjvCmdKGolaHrCH" title="Video explicativo Guía 2" loading="lazy" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+    </figure>
     <ul class="list">
       <li><a target="_blank" rel="noopener" href="20255597_Guia2/pelicula.html">Ejercicio 1: Película</a></li>
       <li><a target="_blank" rel="noopener" href="20255597_Guia2/tablero">Ejercicio 2: Tablero</a></li>
@@ -76,6 +88,10 @@ footer a{color:var(--accent)}
 
   <section id="guia3">
     <h2>Guía 3</h2><p class="sub">Posicionamiento y z-index</p>
+    <figure class="video">
+      <figcaption>Video explicativo Guía 3</figcaption>
+      <div class="frame"><iframe src="https://www.youtube.com/embed/GKZdojDGphg?si=2dgV6s142epcDWFn" title="Video explicativo Guía 3" loading="lazy" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+    </figure>
     <ul class="list">
       <li><a target="_blank" rel="noopener" href="20255597_Guia3/ejemplo1/index.html">Ejercicio 1: Maravillas del Mundo</a></li>
       <li><a target="_blank" rel="noopener" href="20255597_Guia3/ejemplo2/index.html">Ejercicio 2: Compañía Miau</a></li>
@@ -93,6 +109,9 @@ footer a{color:var(--accent)}
   </section>
 </main>
 
+<footer>
+  <div class="wrap">Código fuente en <a target="_blank" rel="noopener" href="https://github.com/berganzaarantza/Guias_CamilaBerganza">GitHub</a>.</div>
+</footer>
 
 <script>
 (function () {
@@ -103,6 +122,7 @@ footer a{color:var(--accent)}
     document.querySelectorAll('ul.list li').forEach(function (li) {
       li.hidden = on && !li.querySelector('.tag');
     });
+    document.querySelectorAll('figure.video').forEach(function (v) { v.hidden = on; });
     document.querySelectorAll('main section').forEach(function (s) {
       s.hidden = on && !s.querySelector('li:not([hidden])');
     });
