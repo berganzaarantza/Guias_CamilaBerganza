@@ -1,81 +1,113 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <title>Página de Inicio</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Camila Berganza · Guías de Desarrollo Web I</title>
+<meta name="description" content="Portafolio de guías y retos de IA de la materia Desarrollo Web I.">
+<style>
+:root{--bg:#f6f4ef;--surface:#fff;--ink:#1d2433;--muted:#5b6475;--line:#dcd8cd;--accent:#1f4fd8;--accent-soft:#e6ecfc;--ai:#b4531a;--ai-soft:#fbeadd}
+@media (prefers-color-scheme:dark){:root{--bg:#12151c;--surface:#1a1f2a;--ink:#e8eaf0;--muted:#9aa3b5;--line:#2b3242;--accent:#7ea2ff;--accent-soft:#1e2a4d;--ai:#f0a06a;--ai-soft:#3a2819}}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.6 Georgia,"Times New Roman",serif}
+a{color:inherit}
+.wrap{max-width:62rem;margin:0 auto;padding:0 1.25rem}
+header{padding:4rem 0 2rem;border-bottom:1px solid var(--line)}
+header h1{font-size:clamp(2.4rem,7vw,4.2rem);line-height:1.05;margin:0 0 .75rem;letter-spacing:-.02em}
+header p{margin:0;max-width:38rem;color:var(--muted);font-size:1.1rem}
+.bar{display:flex;flex-wrap:wrap;gap:1rem 2rem;justify-content:space-between;align-items:center;margin-top:1.75rem;font-family:system-ui,sans-serif;font-size:.9rem}
+.chips{display:flex;flex-wrap:wrap;gap:.5rem}
+.chips a,.chips button{font:inherit;text-decoration:none;color:inherit;cursor:pointer;padding:.4rem .9rem;border:1px solid var(--line);border-radius:999px;background:var(--surface)}
+.chips a:hover,.chips a:focus-visible,.chips button:hover,.chips button:focus-visible{border-color:var(--accent);color:var(--accent);outline:none}
+.chips button[aria-pressed="true"]{background:var(--ai-soft);border-color:var(--ai);color:var(--ai);font-weight:600}
+main{padding:2.5rem 0 4rem}
+section{margin-bottom:3rem}
+section h2{font-size:1.7rem;margin:0 0 .25rem}
+.sub{margin:0 0 1.1rem;color:var(--muted);font-family:system-ui,sans-serif;font-size:.95rem}
+ul.list{list-style:none;margin:0;padding:0;display:grid;gap:.6rem;grid-template-columns:repeat(auto-fill,minmax(17rem,1fr))}
+ul.list a{display:flex;align-items:center;justify-content:space-between;gap:.75rem;height:100%;padding:.9rem 1rem;background:var(--surface);border:1px solid var(--line);border-radius:10px;text-decoration:none;font-family:system-ui,sans-serif;font-size:.97rem;line-height:1.35}
+ul.list a:hover,ul.list a:focus-visible{border-color:var(--accent);outline:2px solid var(--accent-soft)}
+.tag{flex:none;font-size:.75rem;padding:.15rem .55rem;border-radius:999px;background:var(--ai-soft);color:var(--ai);font-weight:600}
+[hidden]{display:none!important}
+footer{padding:1.75rem 0 3rem;border-top:1px solid var(--line);color:var(--muted);font-family:system-ui,sans-serif;font-size:.9rem}
+footer a{color:var(--accent)}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
 </head>
 <body>
+<header>
+  <div class="wrap">
     <h1>Camila Berganza</h1>
-    <h2>Guia 1</h2>
-    <a href="estilos_embebidos.html" target="_blank">Ejercicio 1: Estilos Embebidos</a>
-    <br>
-    <br>
-    <a href="ejemplo2.html" target="_blank">Ejercicio 2: Instrucciones para llorar</a>
-    <br>
-    <br>
-    <a href="paises.html" target="_blank">Ejercicio 3: Paises</a>
-    <br>
-    <br>
-    <a href="ejercicio_comp.html" target="_blank">Ejercicio complementario</a>
-    <br>
-    <br>
-    <a href="RetoIA/instruc_generica.html" target="_blank">Reto IA Instrucción genérica</a>
-    <br>
-    <br>
-    <a href="RetoIA/instruc_desarrollada.html" target="_blank">Reto IA Instrucción desarrollada</a>
-    <br>
-    <br>
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/NNZB_LQoN30?si=ZV5lHjtfrpFfAXuk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-    <br>
-    <br>
-    
-    <h2>Guia 2</h2>
-    <a href="20255597_Guia2/pelicula.html" target="_blank">Ejercicio 1: Pelicula</a>
-    <br>
-    <br>
-    <a href="20255597_Guia2/tablero" target="_blank">Ejercicio 2: Tablero</a>
-    <br>
-    <br>
-    <a href="20255597_Guia2/mi_biografia" target="_blank">Ejercicio complementario: Mi Biografía</a>
-    <br>
-    <br>
-    <a href="20255597_Guia2/pagina_inicio" target="_blank">Reto IA: Página de Inicio</a>
-    <br>
-    <br>
-    <a href="20255597_Guia2/nosotros" target="_blank">Reto IA: Nosotros</a>
-    <br>
-    <br>
-    <a href="20255597_Guia2/faq" target="_blank">Reto IA: FAQ</a>
-    <br>
-    <br>
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/bQlty7DtAvg?si=C7qQ0OTvKf66ofB4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-    <br>
-    <br>
-    
-    <h2>Guia 3</h2>
-    <a href="20255597_Guia3/ejemplo1/index.html" target="_blank">Ejercicio 1: Maravillas del Mundo</a>
-    <br>
-    <br>
-    <a href="20255597_Guia3/ejemplo2/index.html" target="_blank">Ejercicio 2: Compañía Miau</a>
-    <br>
-    <br>
-    <a href="20255597_Guia3/ejercicio/ejercicio.html" target="_blank">Ejercicio: Usando posicionamiento y z-index</a>
-    <br>
-    <br>
-    <a href="20255597_Guia3/reto_IA/index.html" target="_blank">Reto IA: Página de Inicio</a>
-    <br>
-    <br>
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/GKZdojDGphg?si=-BocY2DEP8JXd7H2" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-    <br>
-    <br>
+    <p>Guías y retos de la materia Desarrollo Web I: de HTML y CSS a posicionamiento y JavaScript.</p>
+    <div class="bar">
+      <nav class="chips" aria-label="Ir a una guía">
+        <a href="#guia1">Guía 1</a><a href="#guia2">Guía 2</a><a href="#guia3">Guía 3</a><a href="#guia5">Guía 5</a>
+      </nav>
+      <div class="chips"><button id="filtroIA" type="button" aria-pressed="false">Solo retos de IA</button></div>
+    </div>
+  </div>
+</header>
 
-    
-    <h2>Guia 5</h2>
-    <a href="20255597_Guia5/index.html" target="_blank">Página Interactuando con JavaScript</a>
-    <br>
-    <br>
-    <a href="20255597_Guia5/ej_complementario/index.html" target="_blank">Gestión de pedidos de una cafetería</a>
-    <br>
-    <br>
+<main class="wrap">
+  <section id="guia1">
+    <h2>Guía 1</h2><p class="sub">Estilos, texto y tablas</p>
+    <ul class="list">
+      <li><a target="_blank" rel="noopener" href="estilos_embebidos.html">Ejercicio 1: Estilos embebidos</a></li>
+      <li><a target="_blank" rel="noopener" href="ejemplo2.html">Ejercicio 2: Instrucciones para llorar</a></li>
+      <li><a target="_blank" rel="noopener" href="paises.html">Ejercicio 3: Países</a></li>
+      <li><a target="_blank" rel="noopener" href="ejercicio_comp.html">Ejercicio complementario</a></li>
+      <li><a target="_blank" rel="noopener" href="RetoIA/instruc_generica.html">Reto IA: instrucción genérica <span class="tag">IA</span></a></li>
+      <li><a target="_blank" rel="noopener" href="RetoIA/instruc_desarrollada.html">Reto IA: instrucción desarrollada <span class="tag">IA</span></a></li>
+    </ul>
+  </section>
+
+  <section id="guia2">
+    <h2>Guía 2</h2><p class="sub">Páginas con varias secciones</p>
+    <ul class="list">
+      <li><a target="_blank" rel="noopener" href="20255597_Guia2/pelicula.html">Ejercicio 1: Película</a></li>
+      <li><a target="_blank" rel="noopener" href="20255597_Guia2/tablero">Ejercicio 2: Tablero</a></li>
+      <li><a target="_blank" rel="noopener" href="20255597_Guia2/mi_biografia">Ejercicio complementario: Mi biografía</a></li>
+      <li><a target="_blank" rel="noopener" href="20255597_Guia2/pagina_inicio">Reto IA: Página de inicio <span class="tag">IA</span></a></li>
+      <li><a target="_blank" rel="noopener" href="20255597_Guia2/nosotros">Reto IA: Nosotros <span class="tag">IA</span></a></li>
+      <li><a target="_blank" rel="noopener" href="20255597_Guia2/faq">Reto IA: FAQ <span class="tag">IA</span></a></li>
+    </ul>
+  </section>
+
+  <section id="guia3">
+    <h2>Guía 3</h2><p class="sub">Posicionamiento y z-index</p>
+    <ul class="list">
+      <li><a target="_blank" rel="noopener" href="20255597_Guia3/ejemplo1/index.html">Ejercicio 1: Maravillas del Mundo</a></li>
+      <li><a target="_blank" rel="noopener" href="20255597_Guia3/ejemplo2/index.html">Ejercicio 2: Compañía Miau</a></li>
+      <li><a target="_blank" rel="noopener" href="20255597_Guia3/ejercicio/ejercicio.html">Ejercicio: posicionamiento y z-index</a></li>
+      <li><a target="_blank" rel="noopener" href="20255597_Guia3/reto_IA/index.html">Reto IA: Página de inicio <span class="tag">IA</span></a></li>
+    </ul>
+  </section>
+
+  <section id="guia5">
+    <h2>Guía 5</h2><p class="sub">Interactuando con JavaScript</p>
+    <ul class="list">
+      <li><a target="_blank" rel="noopener" href="20255597_Guia5/index.html">Página interactuando con JavaScript</a></li>
+      <li><a target="_blank" rel="noopener" href="20255597_Guia5/ej_complementario/index.html">Gestión de pedidos de una cafetería</a></li>
+    </ul>
+  </section>
+</main>
+
+
+<script>
+(function () {
+  var btn = document.getElementById('filtroIA');
+  btn.addEventListener('click', function () {
+    var on = btn.getAttribute('aria-pressed') !== 'true';
+    btn.setAttribute('aria-pressed', on);
+    document.querySelectorAll('ul.list li').forEach(function (li) {
+      li.hidden = on && !li.querySelector('.tag');
+    });
+    document.querySelectorAll('main section').forEach(function (s) {
+      s.hidden = on && !s.querySelector('li:not([hidden])');
+    });
+  });
+})();
+</script>
 </body>
 </html>
