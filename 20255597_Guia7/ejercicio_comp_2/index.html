@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Recetas Tasty</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <header class="encabezado">
+    <h1>Recetas Tasty</h1>
+    <p>Elige una receta para ver sus ingredientes y pasos.</p>
+  </header>
+
+  <main>
+    <p id="estado" class="estado" role="status" aria-live="polite"></p>
+    <section id="lista" class="lista" aria-label="Listado de recetas"></section>
+    <div class="mas">
+      <button id="btnMas" type="button" class="btn">Cargar más recetas</button>
+    </div>
+  </main>
+
+  <dialog id="detalle" class="detalle" aria-labelledby="detalleTitulo">
+    <button id="btnCerrar" type="button" class="cerrar" aria-label="Cerrar detalle">&times;</button>
+    <div id="detalleContenido"></div>
+  </dialog>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
