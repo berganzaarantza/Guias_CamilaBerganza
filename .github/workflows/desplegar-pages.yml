@@ -1,0 +1,47 @@
+name: Desplegar sitio en GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Descargar el repositorio
+        uses: actions/checkout@v4
+
+      - name: Insertar la API key en app.js
+        env:
+          RAPIDAPI_KEY: ${{ secrets.RAPIDAPI_KEY }}
+        run: |
+          if [ -z "$RAPIDAPI_KEY" ]; then
+            echo "Falta el secret RAPIDAPI_KEY en Settings > Secrets and variables > Actions"
+            exit 1
+          fi
+          sed -i "s|const API_KEY = \"TU_API_KEY\";|const API_KEY = \"${RAPIDAPI_KEY}\";|" 20255597_Guia7/ejercicio_comp_2/js/app.js
+
+      - name: Configurar Pages
+        uses: actions/configure-pages@v5
+
+      - name: Subir el sitio
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: .
+
+      - name: Publicar
+        id: deployment
+        uses: actions/deploy-pages@v4
